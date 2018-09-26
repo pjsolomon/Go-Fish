@@ -70,6 +70,7 @@ public class GoFish
        while(goAgain)
        {
           //if current player is human, call Player.showHand()
+          /***** NEED FUNCTION TO DETERMINE IF PLAYER IS HUMAN *****/
           /***** NEED FUNCTION TO PRINT CARDS WITHIN A COLLECTION *****/
 
           //if current player is human, ask for a card, accept input
