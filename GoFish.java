@@ -5,16 +5,27 @@ public class GoFish
   //FIELDS
   public static Player[] players;
   public static Collection deck;
+  public static int turn;
 
   public static void switchTurn()
   {
-    //switch turns somehow
+    if(turn == 1)
+    {
+      turn == 0
+    }
+    else
+    {
+      turn == 1
+    }
   }
 
   public static Boolean isGameOver()
   {
     //game is over when all cards are in completed sets of 4
     //thus, game is over when there are 52/4=13 sets
+
+    /***** NEED FUNCTION TO ACCESS PLAYERS # OF SETS *****/
+
     if(//humanPlayer.sets + computerPlayer.sets == 13)
     {
       return true;
@@ -49,35 +60,46 @@ public class GoFish
      Scanner Reader = new Scanner(System.in);
 
      //initalize boolean to determine if current player get an additional turns
-     Boolean playAgain;
+     Boolean goAgain;
 
 
      while(!isGameOver())
      {
-       playAgain = true;
+       goAgain = true;
 
-       while(playAgain)
+       while(goAgain)
        {
           //if current player is human, call Player.showHand()
+          /***** NEED FUNCTION TO PRINT CARDS WITHIN A COLLECTION *****/
+
           //if current player is human, ask for a card, accept input
+
           //run checkHand() on non-current player
+          /***** NEED FUNCTION TO CHECK COLLECTION FOR CERTAIN CARDS *****/
           if(//checkHand==true)
           {
             //switch card from hands
-            playAgain = true;
+            /***** NEED FUNCTION TO REMOVE CARD FROM A COLLECTION *****/
+            /***** NEED FUNCTION TO ADD CARD TO A COLLECTION *****/
+            goAgain = true;
           }
           else
           {
             //current player draws from deck
+            /***** NEED FUNCTION TO 'POP' CARD FROM A COLLECTION *****/
+
+            /***** NEED FUNCTION TO CHECK CARD EQUIVALENCE *****/
             if(//drawn card matches card asked for)
             {
+              /***** NEED FUNCTION TO CHECK FOR SETS WITHIN A COLLECTION *****/
               //check for sets of 4
-              playAgain = true;
+              goAgain = true;
             }
             else
             {
               //check for sets of 4
-              playAgain = false;
+              /***** NEED FUNCTION TO CHECK FOR SETS WITHIN A COLLECTION *****/
+              goAgain = false;
             }
           }
       }
