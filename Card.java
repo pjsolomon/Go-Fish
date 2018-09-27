@@ -1,5 +1,8 @@
+enum Suit {SPADE, CLUB, DIAMOND, HEART}
+enum Face {NONE, JACK, QUEEN, KING, ACE}
+
 class Card {
-    enum Suit {SPADE, CLUB, DIAMOND, HEART}
+
 
     private int value;
     private Suit suit;
@@ -16,6 +19,7 @@ class Card {
     int getValue() {
         return this.value;
     }
+
 
     void setSuit(Suit suit) {
         this.suit = suit;
