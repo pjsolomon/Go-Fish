@@ -11,11 +11,11 @@ public class GoFish
   {
     if(Turn == 1)
     {
-      Turn == 0;
+      Turn = 0;
     }
     else
     {
-      Turn == 1;
+      Turn = 1;
     }
   }
 
@@ -38,7 +38,7 @@ public class GoFish
 
     /***** NEED FUNCTION TO ACCESS PLAYERS # OF SETS *****/
 
-    if(//humanPlayer.sets + computerPlayer.sets == 13)
+    if(true)//humanPlayer.sets + computerPlayer.sets == 13)
     {
       return true;
     }
@@ -80,6 +80,12 @@ public class GoFish
      //initialize scanner object
      Scanner Reader = new Scanner(System.in);
 
+     CardCollection removedCards;
+
+     int requestedValue;
+
+     Card drawnCard;
+
      //initalize boolean to determine if current player get an additional turns
      Boolean goAgain;
 
@@ -95,7 +101,7 @@ public class GoFish
           Players[Turn].showHand();
 
           //if current player is human, ask for a card, accept input
-          int requestedValue = Players[Turn].requestCard();
+          requestedValue = Players[Turn].requestCard();
 
           //run checkHand() on non-current player
           /***** NEED FUNCTION TO CHECK COLLECTION FOR CERTAIN CARDS *****/
@@ -103,11 +109,11 @@ public class GoFish
           {
             //switch card from hands
             /***** NEED FUNCTION TO REMOVE CARD FROM A COLLECTION *****/
-            CardCollection removedCards = Players[otherPlayer()].removeValues(requestedValue);
+            removedCards = Players[otherPlayer()].popFromHand(requestedValue);
             /***** NEED FUNCTION TO ADD CARD TO A COLLECTION *****/
             for(int i = 0; i < removedCards.cSize(); i++)
             {
-              Players[Turn].addCard(removedCards[i]);
+              Players[Turn].addToHand(removedCards[i]);
             }
 
             goAgain = true;
@@ -115,8 +121,8 @@ public class GoFish
           else
           {
             //current player draws from deck
-            Card drawnCard = Deck.draw();
-            Players[Turn].addCard(drawnCard);
+            drawnCard = Deck.draw();
+            Players[Turn].addToHand(drawnCard);
 
             /***** NEED FUNCTION TO CHECK CARD EQUIVALENCE *****/
             if(drawnCard.getValue == requestedValue)
@@ -139,3 +145,4 @@ public class GoFish
 
     //Display some output at the end of the game
   }
+}

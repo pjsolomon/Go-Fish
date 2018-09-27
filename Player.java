@@ -27,6 +27,16 @@ public class Player
 		hand.printCards();
 	}
 
+	public void addToHand(Card C)
+	{
+		hand.addCard(C);
+	}
+
+	public CardCollection popFromHand(int V)
+	{
+		return hand.removeValues(V);
+	}
+
 	/**
 	 * checkHand
 	 * Asks the player if he has a specific card. Allows player to lie.
