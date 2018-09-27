@@ -28,6 +28,16 @@ public class ComputerPlayer extends Player {
 	}
 
 	/**
+	 * showHand
+	 * Overwrites the Player's Function to Show Hand. Since this is the computer, we show nothing.
+	 * @return string showing nothing.
+	 */	
+	public String showHand(){
+		String returnValue = "";
+		return returnValue;
+	}
+
+	/**
 	 * checkHand
 	 * Accepts a card value, then checks the ComputerPlayer's hand for that value.
 	 * Will Lie according to Lie Frequency Setting.
@@ -52,6 +62,24 @@ public class ComputerPlayer extends Player {
 		}
 	}
 
+
+	/**
+	 * requestCard
+	 * Get's the card value that the computer wants.
+	 * @return Value of card the computer wants.
+	 */
+	public int requestCard (){
+		int returnValue = 0;
+		switch (computerPlayerIntelligence){
+			case 1:
+				returnValue = this.hand.getRandomValue();
+				break;
+			case 2:
+				// Trying to figure this one out. Do we already have a variable that keeps track of requested cards?
+		}
+		return returnValue;
+	}
+
 	/**
 	 * toString
 	 * Returns a string showing ComputerPlayer status, ideally for writing status
@@ -63,28 +91,5 @@ public class ComputerPlayer extends Player {
 		return returnValue;
 	}
 
-	/**
-	 * takeTurn
-	 * Computer Player's Take Turn Function
-	 * Calls pickCardLogic to decide on what card to pick. Requests card of opponent
-	 * If other player has card, performs card swap. Else, draws card.
-	 *
-	 * @param Player Opposing player.
-	 */
-	public takeTurn(Player opponent) {
-		requestedCard = pickCardLogic
-		if (opponent.checkHand(requestedCard)) {
-			hand.add(opponent.getCards(requestedCard));
-		} else {
-			// drawCard = deck.draw()
-			this.hand.add(drawCard);
-			// If this card matches requested card, get a free turn!
-			// interface.say("\nComputer Player drew " + requestedCard + " and gets a free turn.")
-			if (drawCard == requestedCard) {
-				this.takeTurn(opponent);
-			}
-		}
-		return;
-	}
 
 }
