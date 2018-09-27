@@ -10,7 +10,6 @@ public class CardSet
   {
     this.Contenst = Cs;
   }
-=
   //Adds Card to the List
   public void addCard(Card C)
   {
