@@ -3,19 +3,31 @@ import java.util.Scanner;
 public class GoFish
 {
   //FIELDS
-  public static Player[] players;
-  public static Collection deck;
-  public static int turn;
+  public static Player[] Players;
+  public static CardSet Deck;
+  public static int Turn;
 
   public static void switchTurn()
   {
-    if(turn == 1)
+    if(Turn == 1)
     {
-      turn == 0
+      Turn == 0;
     }
     else
     {
-      turn == 1
+      Turn == 1;
+    }
+  }
+
+  public static int otherPlayer()
+  {
+    if(Turn == 1)
+    {
+      return 0;
+    }
+    else
+    {
+      return 1;
     }
   }
 
@@ -39,6 +51,15 @@ public class GoFish
 
   public static void main(String[] args)
   {
+
+    Player Player1 = new Player();
+    Player Player2 = new Player();
+
+    Players = new Player[2];
+    Player[0] = Player1;
+    Player[1] = Player2;
+
+    //MUST INITALIZE DECK AND PLAYERS' HANDS
 
     /*
      * Anatomy of a Turn in Go Fish:
@@ -71,9 +92,13 @@ public class GoFish
        {
           //if current player is human, call Player.showHand()
           /***** NEED FUNCTION TO DETERMINE IF PLAYER IS HUMAN *****/
-          /***** NEED FUNCTION TO PRINT CARDS WITHIN A COLLECTION *****/
+          Players[Turn].showHand();
+
 
           //if current player is human, ask for a card, accept input
+          /***** NEED FUNCTION TO TURN INPUT INTO CARD OBJECT *****/
+
+
 
           //run checkHand() on non-current player
           /***** NEED FUNCTION TO CHECK COLLECTION FOR CERTAIN CARDS *****/
@@ -87,7 +112,7 @@ public class GoFish
           else
           {
             //current player draws from deck
-            /***** NEED FUNCTION TO 'POP' CARD FROM A COLLECTION *****/
+            Card drawnCard = Deck.draw();
 
             /***** NEED FUNCTION TO CHECK CARD EQUIVALENCE *****/
             if(//drawn card matches card asked for)

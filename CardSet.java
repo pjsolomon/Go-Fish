@@ -10,7 +10,7 @@ public class CardSet
   {
     this.Contenst = Cs;
   }
-
+=
   //Adds Card to the List
   public void addCard(Card C)
   {
@@ -49,8 +49,40 @@ public class CardSet
   }
 
   //Check for Sets of 4 within the List
+  /* An Absolute Mess Right Now, Definitely can be Improved */
   public void checkSets()
   {
-    //TBD
+    int v;
+    Dictionary Dict = new Dictionary();
+    ArrayList<int> Keys = new ArrayList();
+
+    for(int i = 0; i < Contents.size(); i++)
+    {
+      if(Dict.get(Contents[i].getValue) == null)
+      {
+        Dict.put(Contents[i].getValue(), 1);
+        Keys.add(Contents[i].getValue());
+      }
+      else
+      {
+        v = Dict.get(Contents[i].getValue);
+        Dict.put(Contents[i].getValue(), v+1);
+      }
+    }
+
+    for(int j = 0; j < Keys.size(); j++)
+    {
+      if(Dict.get(Keys[j]) == 4)
+      {
+        for(int k = 0; k < Contents<size(); k++)
+        {
+          if(Contents[k].getValue == Keys[j])
+          {
+            Contents.remove(k);
+            k = 0;
+          }
+        }
+      }
+    }
   }
 }
