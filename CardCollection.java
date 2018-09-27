@@ -21,7 +21,7 @@ public class CardCollection
   public CardCollection removeValues(int V)
   {
     CardCollection removedCards = new CardCollection();
-    Iterator itr = Contents.Iterator();
+    Iterator itr = Contents.iterator();
     while(itr.hasNext())
     {
       Card C = (Card)itr.next();
@@ -46,7 +46,7 @@ public class CardCollection
       }
     }
 
-    return false
+    return false;
   }
 
   public void printCards()

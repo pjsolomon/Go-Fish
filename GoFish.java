@@ -4,7 +4,7 @@ public class GoFish
 {
   //FIELDS
   public static Player[] Players;
-  public static CardSet Deck;
+  public static CardCollection Deck;
   public static int Turn;
 
   public static void switchTurn()
@@ -56,8 +56,8 @@ public class GoFish
     Player Player2 = new Player();
 
     Players = new Player[2];
-    Player[0] = Player1;
-    Player[1] = Player2;
+    Players[0] = Player1;
+    Players[1] = Player2;
 
     //MUST INITALIZE DECK AND PLAYERS' HANDS
 
@@ -105,7 +105,7 @@ public class GoFish
 
           //run checkHand() on non-current player
           /***** NEED FUNCTION TO CHECK COLLECTION FOR CERTAIN CARDS *****/
-          if(Players[otherPlayer()].checkHand(C))
+          if(Players[otherPlayer()].checkHand(requestedValue))
           {
             //switch card from hands
             /***** NEED FUNCTION TO REMOVE CARD FROM A COLLECTION *****/
@@ -113,7 +113,7 @@ public class GoFish
             /***** NEED FUNCTION TO ADD CARD TO A COLLECTION *****/
             for(int i = 0; i < removedCards.cSize(); i++)
             {
-              Players[Turn].addToHand(removedCards[i]);
+              Players[Turn].addToHand(removedCards.get(i));
             }
 
             goAgain = true;
@@ -125,7 +125,7 @@ public class GoFish
             Players[Turn].addToHand(drawnCard);
 
             /***** NEED FUNCTION TO CHECK CARD EQUIVALENCE *****/
-            if(drawnCard.getValue == requestedValue)
+            if(drawnCard.getValue() == requestedValue)
             {
               /***** NEED FUNCTION TO CHECK FOR SETS WITHIN A COLLECTION *****/
               //check for sets of 4
@@ -140,7 +140,7 @@ public class GoFish
           }
       }
 
-      switchTurns();
+      switchTurn();
     }
 
     //Display some output at the end of the game
