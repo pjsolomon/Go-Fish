@@ -4,7 +4,7 @@
 
 public class Player
 {
-	private Collection hand;
+	private CardCollection hand;
 	private int completedSets;
 
 
@@ -22,9 +22,9 @@ public class Player
 	 *showHand
 	 *Shows the hand of the Player
 	 *@return string showing the Player's hand
-	 */	
+	 */
 	public String showHand(){
-		return this.hand;
+		hand.printCards();
 	}
 
 	/**
@@ -36,9 +36,13 @@ public class Player
 	public Boolean checkHand (int cardValue){
 		Boolean isInHand = false;
 		Boolean continueToLoop = true;
+
+		Scanner Reader = new Scanner(System.in);
+
 		while(continueToLoop){
 			//Need some function to call from the interface to ask the operator if they have 'cardValue'
-			String playerResponse = interface.prompt("Do you have any " + cardValue + "s? (Y/N): ");
+			System.out.prinln("Do you have any " + cardValue + "s? (Y/N): ");
+			String Input = Reader.next()
 
 			if (playerResponse.toLowerCase() == "y" && this.hand.contains(cardValue)) {
 				// Player says they have it, and actually has the card(s)
@@ -74,13 +78,15 @@ public class Player
 	public int requestCard (){
 		Boolean continueToLoop = true;
 		int returnValue = 0;
+		Scanner Reader = new Scanner(System.in);
 		while(continueToLoop){
 			// This function assumes that the interface class contains a function called "prompt"
 			// Assuming that it accepts a string as an argument, where that string will be displayed
 			// somehow, and the function will return the inputed value.
-			String playerRequest = interface.prompt("What card will you ask for? ");
+			System.out.prinln("What card will you ask for? ");
+			String Input = Reader.next();
 			// Trim the string for the switch
-			String caseSelector = playerRequest.trim().toLowerCase().substring(0,3);
+			String caseSelector = Input.trim().toLowerCase().substring(0,3);
 			// This switch interprets the first 3 characters in the returned string.
 			// Accepts numbers, number words, and face card names.
 			// Sets this function's returnValue
@@ -147,11 +153,11 @@ public class Player
 			}
 
 			// Make sure the player can only ask for cards they already have.
-			if(this.hand.contains(returnValue)){
+			if(this.hand.containsValue(returnValue)){
 				return returnValue;
 			} else {
 				// Remind Player that they have to ask for a value they alraedy have.
-				interface.message("You do not have this card in your hand. Please ask for a card value that you already have in your hand.");
+				System.out.println("You do not have this card in your hand. Please ask for a card value that you already have in your hand.");
 				returnValue = 0;
 			}
 			// If we've gone this far, we should repeat the loop.

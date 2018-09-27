@@ -94,10 +94,8 @@ public class GoFish
           /***** NEED FUNCTION TO DETERMINE IF PLAYER IS HUMAN *****/
           Players[Turn].showHand();
 
-
           //if current player is human, ask for a card, accept input
-          /***** NEED FUNCTION TO TURN INPUT INTO CARD OBJECT *****/
-
+          int C = Players[Turn].requestCard();
 
 
           //run checkHand() on non-current player
