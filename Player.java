@@ -15,7 +15,7 @@ public class Player
 	 *Creates a "Player" object. Initializes completedSets at 0
 	 */
 	public Player (){
-		hand = new Collection();
+		hand = new CardCollection();
 		completedSets = 0;
 	}
 
@@ -24,7 +24,7 @@ public class Player
 	 *Shows the hand of the Player
 	 *@return string showing the Player's hand
 	 */
-	public String showHand(){
+	public void showHand(){
 		hand.printCards();
 	}
 
@@ -169,10 +169,11 @@ public class Player
 			} else {
 				// Remind Player that they have to ask for a value they alraedy have.
 				System.out.println("You do not have this card in your hand. Please ask for a card value that you already have in your hand.");
-				returnValue = 0;
+				return returnValue;
 			}
 			// If we've gone this far, we should repeat the loop.
 		}
+		return 0;
 	}
 
 	/**
