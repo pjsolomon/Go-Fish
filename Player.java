@@ -1,6 +1,7 @@
 // Player class
 // 09/22/2018
 
+import java.util.Scanner;
 
 public class Player
 {
@@ -51,28 +52,28 @@ public class Player
 
 		while(continueToLoop){
 			//Need some function to call from the interface to ask the operator if they have 'cardValue'
-			System.out.prinln("Do you have any " + cardValue + "s? (Y/N): ");
-			String Input = Reader.next()
+			System.out.println("Do you have any " + cardValue + "s? (Y/N): ");
+			String Input = Reader.next();
 
-			if (playerResponse.toLowerCase() == "y" && this.hand.contains(cardValue)) {
+			if (Input.toLowerCase() == "y" && this.hand.containsValue(cardValue)) {
 				// Player says they have it, and actually has the card(s)
 				isInHand = true;
 				continueToLoop = false;
-			} else if (playerResponse.toLowerCase() == "y" && !(this.hand.contains(cardValue))){
+			} else if (Input.toLowerCase() == "y" && !(this.hand.containsValue(cardValue))){
 				// Player says they have it, but does not actually have the cards!
 				isInHand = false;
-				interface.message("Can't Lie about this one!");
-			} else if (playerResponse.toLowerCase() == "n" && !(this.hand.contains(cardValue))){
+				System.out.println("Can't Lie about this one!");
+			} else if (Input.toLowerCase() == "n" && !(this.hand.containsValue(cardValue))){
 				// Player says they don't have it, and they don't actually have the cards!
 				isInHand = false;
 				continueToLoop = false;
-			} else if (playerResponse.toLowerCase() == "n" && (this.hand.contains(cardValue))){
+			} else if (Input.toLowerCase() == "n" && (this.hand.containsValue(cardValue))){
 				// Player lies, actually having the cards!
-				interface.message("Don't Worry, your secret is safe with me.");
+				System.out.println("Don't Worry, your secret is safe with me.");
 				isInHand = false;
 				continueToLoop = false;
 			} else {
-				interface.message("I don't understand. Try again!");
+				System.out.println("I don't understand. Try again!");
 			}
 		}
 		// Made it out! It's time to return.
@@ -93,7 +94,7 @@ public class Player
 			// This function assumes that the interface class contains a function called "prompt"
 			// Assuming that it accepts a string as an argument, where that string will be displayed
 			// somehow, and the function will return the inputed value.
-			System.out.prinln("What card will you ask for? ");
+			System.out.println("What card will you ask for? ");
 			String Input = Reader.next();
 			// Trim the string for the switch
 			String caseSelector = Input.trim().toLowerCase().substring(0,3);
@@ -181,6 +182,6 @@ public class Player
 	 */
 	public String toString(){
 		String returnValue = "Human Player Score: " + this.completedSets + "\nHuman Player Hand: " + this.hand + "\n";
-		return returnValue
+		return returnValue;
 	}
 }
