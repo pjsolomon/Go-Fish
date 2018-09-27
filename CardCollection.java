@@ -1,4 +1,5 @@
-import java.util;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class CardCollection
 {
@@ -6,9 +7,9 @@ public class CardCollection
   public ArrayList<Card> Contents;
 
   //Constructor, Initalizes a List of Card
-  public CardCollection(ArrayList<Card> Cs)
+  public CardCollection()
   {
-    this.Contenst = Cs;
+    Contents = new ArrayList();
   }
   //Adds Card to the List
   public void addCard(Card C)
@@ -17,9 +18,21 @@ public class CardCollection
   }
 
   //Removes a Card from the List
-  public void removeCard(Card C)
+  public CardCollection removeValues(int V)
   {
-    Contents.remove(C);
+    CardCollection removedCards = new CardCollection();
+    Iterator itr = Contents.Iterator();
+    while(itr.hasNext())
+    {
+      Card C = (Card)itr.next();
+
+      if(C.getValue() == V)
+      {
+        removedCards.add(C);
+        itr.remove();
+      }
+    }
+    return removedCards;
   }
 
   //Check if List Contains a Card
@@ -45,6 +58,11 @@ public class CardCollection
     }
 
     System.out.println("");
+  }
+
+  public int cSize()
+  {
+    return Contents.size();
   }
 
   //Pops a Card from the List

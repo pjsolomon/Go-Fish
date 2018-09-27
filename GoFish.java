@@ -95,25 +95,31 @@ public class GoFish
           Players[Turn].showHand();
 
           //if current player is human, ask for a card, accept input
-          int C = Players[Turn].requestCard();
-
+          int requestedValue = Players[Turn].requestCard();
 
           //run checkHand() on non-current player
           /***** NEED FUNCTION TO CHECK COLLECTION FOR CERTAIN CARDS *****/
-          if(//checkHand==true)
+          if(Players[otherPlayer()].checkHand(C))
           {
             //switch card from hands
             /***** NEED FUNCTION TO REMOVE CARD FROM A COLLECTION *****/
+            CardCollection removedCards = Players[otherPlayer()].removeValues(requestedValue);
             /***** NEED FUNCTION TO ADD CARD TO A COLLECTION *****/
+            for(int i = 0; i < removedCards.cSize(); i++)
+            {
+              Players[Turn].addCard(removedCards[i]);
+            }
+
             goAgain = true;
           }
           else
           {
             //current player draws from deck
             Card drawnCard = Deck.draw();
+            Players[Turn].addCard(drawnCard);
 
             /***** NEED FUNCTION TO CHECK CARD EQUIVALENCE *****/
-            if(//drawn card matches card asked for)
+            if(drawnCard.getValue == requestedValue)
             {
               /***** NEED FUNCTION TO CHECK FOR SETS WITHIN A COLLECTION *****/
               //check for sets of 4
