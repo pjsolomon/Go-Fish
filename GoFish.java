@@ -18,7 +18,6 @@ public class GoFish
       Turn = 1;
     }
   }
-
   public static int otherPlayer()
   {
     if(Turn == 1)
@@ -80,7 +79,7 @@ public class GoFish
      //initialize scanner object
      Scanner Reader = new Scanner(System.in);
 
-     CardCollection removedCards;
+     ArrayList<Card> removedCards;
 
      int requestedValue;
 

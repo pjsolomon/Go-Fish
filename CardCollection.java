@@ -18,9 +18,9 @@ public class CardCollection
   }
 
   //Removes a Card from the List
-  public CardCollection removeValues(int V)
+  public ArrayList removeValues(int V)
   {
-    CardCollection removedCards = new CardCollection();
+    ArrayList<Card> removedCards = new ArrayList();
     Iterator itr = Contents.iterator();
     while(itr.hasNext())
     {
@@ -28,7 +28,7 @@ public class CardCollection
 
       if(C.getValue() == V)
       {
-        removedCards.addCard(C);
+        removedCards.add(C);
         itr.remove();
       }
     }
