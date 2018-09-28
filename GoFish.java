@@ -49,6 +49,22 @@ public class GoFish
 
   }
 
+  public static void populateHands()
+  {
+    Card C;
+
+    for(int i = 0; i < 7; i++)
+    {
+      C = Deck.draw();
+      Players[0].addToHand(C);
+    }
+    for(int i = 0; i < 7; i++)
+    {
+      C = Deck.draw();
+      Players[1].addToHand(C);
+    }
+  }
+
   public static void main(String[] args)
   {
 
@@ -58,6 +74,8 @@ public class GoFish
     Players = new Player[2];
     Players[0] = Player1;
     Players[1] = Player2;
+
+    Deck.populaDeck();
 
     //MUST INITALIZE DECK AND PLAYERS' HANDS
 

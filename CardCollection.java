@@ -4,7 +4,7 @@ import java.util.Iterator;
 public class CardCollection
 {
 
-  ArrayList<Card> Contents = new ArrayList<Card>();
+  ArrayList<Card> Contents;
 
   //Constructor, Initalizes a List of Card
   public CardCollection()
@@ -80,11 +80,11 @@ public class CardCollection
 
   }
 
-  //This method creates a clean deck of 52 cards
-  public ArrayList<Card> initializeDeck() {
-
+  public void populaDeck()
+  {
     //Plebian Cards
-    for (int i = 2; i < 11; i++) {
+    for (int i = 2; i < 11; i++)
+    {
       Card spades = new Card(Suit.SPADE, i);
       Contents.add(spades);
       Card hearts = new Card(Suit.HEART, i);
@@ -135,7 +135,6 @@ public class CardCollection
     Card aceClub = new Card(Suit.CLUB, 14);
     Contents.add(aceClub);
 
-
-    return Contents;
+    Collections.shuffle(Contents);
   }
 }
