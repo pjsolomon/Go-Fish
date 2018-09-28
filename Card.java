@@ -20,12 +20,16 @@ class Card {
         return this.value;
     }
 
-
     void setSuit(Suit suit) {
         this.suit = suit;
     }
 
     void setValue(int value) {
         this.value = value;
+    }
+
+    void printCard() {
+      System.out.println(value + " " + suit);
+      System.out.println("");
     }
 }

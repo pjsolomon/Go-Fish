@@ -62,6 +62,7 @@ public class Player
 			//Need some function to call from the interface to ask the operator if they have 'cardValue'
 			System.out.println("Do you have any " + cardValue + "s? (Y/N): ");
 			String Input = Reader.next();
+			System.out.println("");
 
 			if (Input.toLowerCase().equals("y") && this.hand.containsValue(cardValue)) {
 				// Player says they have it, and actually has the card(s)
@@ -71,6 +72,7 @@ public class Player
 				// Player says they have it, but does not actually have the cards!
 				isInHand = false;
 				System.out.println("Can't Lie about this one!");
+				System.out.println("");
 			} else if (Input.toLowerCase().equals("n") && !(this.hand.containsValue(cardValue))){
 				// Player says they don't have it, and they don't actually have the cards!
 				isInHand = false;
@@ -78,10 +80,12 @@ public class Player
 			} else if (Input.toLowerCase().equals("n") && (this.hand.containsValue(cardValue))){
 				// Player lies, actually having the cards!
 				System.out.println("Don't Worry, your secret is safe with me.");
+				System.out.println("");
 				isInHand = false;
 				continueToLoop = false;
 			} else {
 				System.out.println("I don't understand. Try again!");
+				System.out.println("");
 			}
 		}
 		// Made it out! It's time to return.
@@ -104,6 +108,7 @@ public class Player
 			// somehow, and the function will return the inputed value.
 			System.out.println("What card will you ask for? ");
 			String Input = Reader.next();
+			System.out.println("");
 			// Trim the string for the switch
 			String caseSelector = Input.trim().toLowerCase().substring(0,3);
 			// This switch interprets the first 3 characters in the returned string.

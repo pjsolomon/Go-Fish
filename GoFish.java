@@ -129,6 +129,8 @@ public class GoFish
             {
               Players[Turn].addToHand(removedCards.get(i));
             }
+
+            System.out.println("Good guess! Go again!\n");
             //Current Player Gets Another Turn
             goAgain = true;
           }
@@ -140,12 +142,17 @@ public class GoFish
             //Current Player Draws from Decks
             drawnCard = Deck.draw();
             Players[Turn].addToHand(drawnCard);
+            System.out.print("You drew a ");
+            drawnCard.printCard();
+
 
             //If Value of Drawn Card Matches Declared Value, Player Goes Again
             if(drawnCard.getValue() == requestedValue)
             {
+              System.out.print("It's a match! ");
               //CHECK FOR SET OF 4
               goAgain = true;
+              System.out.println("Go Again!\n");
             }
             //Otherwise, Their Turn Ends
             else
