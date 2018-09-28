@@ -1,8 +1,6 @@
 import java.util.Scanner;
 import java.util.ArrayList;
 
-@SuppressWarnings("unchecked")
-
 public class GoFish
 {
   //FIELDS
@@ -101,7 +99,7 @@ public class GoFish
      */
 
      //Initialize Some Variables to Use Later
-     ArrayList<Card> removedCards = new ArrayList();
+     ArrayList<Card> removedCards = new ArrayList<Card>();
      int requestedValue;
      Card drawnCard;
      Boolean goAgain;

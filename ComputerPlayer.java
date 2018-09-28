@@ -51,7 +51,7 @@ public class ComputerPlayer extends Player {
 			Random randomNumber = new Random();
 			// If the random number is higher than the "Lie Frequency", Computer
 			// will tell truth and admit it has the card. Otherwise it will lie.
-			if (randumNumber.nextInt(100) > computerPlayerLieFrequency) {
+			if (randomNumber.nextInt(100) > computerPlayerLieFrequency) {
 				isInHand = true;
 				return isInHand;
 			} else {

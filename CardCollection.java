@@ -3,8 +3,6 @@ import java.util.Iterator;
 import java.util.Collections;
 import java.util.Dictionary;
 
-@SuppressWarnings("unchecked")
-
 public class CardCollection
 {
 
@@ -13,7 +11,7 @@ public class CardCollection
   //Constructor, Initalizes CardCollection with Empty Contents
   public CardCollection()
   {
-    Contents = new ArrayList();
+    Contents = new ArrayList<Card>();
   }
   //Adds A Card to the CardCollection
   public void addCard(Card C)
@@ -24,7 +22,7 @@ public class CardCollection
   //Removes All of a Specified Value from the CardCollection
   public ArrayList removeValues(int V)
   {
-    ArrayList<Card> removedCards = new ArrayList();
+    ArrayList<Card> removedCards = new ArrayList<Card>();
     Iterator itr = Contents.iterator();
     while(itr.hasNext())
     {
