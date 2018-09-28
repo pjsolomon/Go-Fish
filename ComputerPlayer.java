@@ -23,7 +23,7 @@ public class ComputerPlayer extends Player {
 	public ComputerPlayer(int intelligence, int lieFrequency) {
 		computerPlayerIntelligence = intelligence;
 		computerPlayerLieFrequency = lieFrequency;
-		hand = new Collection();
+		hand = new CardCollection();
 		completedSets = 0;
 	}
 
@@ -31,10 +31,10 @@ public class ComputerPlayer extends Player {
 	 * showHand
 	 * Overwrites the Player's Function to Show Hand. Since this is the computer, we show nothing.
 	 * @return string showing nothing.
-	 */	
-	public String showHand(){
-		String returnValue = "";
-		return returnValue;
+	 */
+	public void showHand()
+	{
+		System.out.println("");
 	}
 
 	/**

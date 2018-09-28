@@ -4,10 +4,12 @@
 import java.util.Scanner;
 import java.util.ArrayList;
 
+@SuppressWarnings("unchecked")
+
 public class Player
 {
-	private CardCollection hand;
-	private int completedSets;
+	protected CardCollection hand;
+	protected int completedSets;
 
 
 	// Constructors
@@ -23,9 +25,9 @@ public class Player
 	/**
 	 *showHand
 	 *Shows the hand of the Player
-	 *@return string showing the Player's hand
 	 */
-	public void showHand(){
+	public void showHand()
+	{
 		hand.printCards();
 	}
 
@@ -37,6 +39,11 @@ public class Player
 	public ArrayList<Card> popFromHand(int V)
 	{
 		return hand.removeValues(V);
+	}
+
+	public int getSets()
+	{
+		return completedSets;
 	}
 
 	/**
@@ -56,19 +63,19 @@ public class Player
 			System.out.println("Do you have any " + cardValue + "s? (Y/N): ");
 			String Input = Reader.next();
 
-			if (Input.toLowerCase() == "y" && this.hand.containsValue(cardValue)) {
+			if (Input.toLowerCase().equals("y") && this.hand.containsValue(cardValue)) {
 				// Player says they have it, and actually has the card(s)
 				isInHand = true;
 				continueToLoop = false;
-			} else if (Input.toLowerCase() == "y" && !(this.hand.containsValue(cardValue))){
+			} else if (Input.toLowerCase().equals("y") && !(this.hand.containsValue(cardValue))){
 				// Player says they have it, but does not actually have the cards!
 				isInHand = false;
 				System.out.println("Can't Lie about this one!");
-			} else if (Input.toLowerCase() == "n" && !(this.hand.containsValue(cardValue))){
+			} else if (Input.toLowerCase().equals("n") && !(this.hand.containsValue(cardValue))){
 				// Player says they don't have it, and they don't actually have the cards!
 				isInHand = false;
 				continueToLoop = false;
-			} else if (Input.toLowerCase() == "n" && (this.hand.containsValue(cardValue))){
+			} else if (Input.toLowerCase().equals("n") && (this.hand.containsValue(cardValue))){
 				// Player lies, actually having the cards!
 				System.out.println("Don't Worry, your secret is safe with me.");
 				isInHand = false;
@@ -91,7 +98,7 @@ public class Player
 		Boolean continueToLoop = true;
 		int returnValue = 0;
 		Scanner Reader = new Scanner(System.in);
-		while(continueToLoop){
+		while(returnValue == 0){
 			// This function assumes that the interface class contains a function called "prompt"
 			// Assuming that it accepts a string as an argument, where that string will be displayed
 			// somehow, and the function will return the inputed value.
@@ -165,16 +172,13 @@ public class Player
 			}
 
 			// Make sure the player can only ask for cards they already have.
-			if(this.hand.containsValue(returnValue)){
-				return returnValue;
-			} else {
-				// Remind Player that they have to ask for a value they alraedy have.
+			if(!this.hand.containsValue(returnValue))
+			{
+				returnValue = 0;
 				System.out.println("You do not have this card in your hand. Please ask for a card value that you already have in your hand.");
-				return returnValue;
 			}
-			// If we've gone this far, we should repeat the loop.
 		}
-		return 0;
+		return returnValue;
 	}
 
 	/**

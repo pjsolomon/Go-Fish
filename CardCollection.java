@@ -1,23 +1,27 @@
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Collections;
+import java.util.Dictionary;
+
+@SuppressWarnings("unchecked")
 
 public class CardCollection
 {
 
   ArrayList<Card> Contents;
 
-  //Constructor, Initalizes a List of Card
+  //Constructor, Initalizes CardCollection with Empty Contents
   public CardCollection()
   {
     Contents = new ArrayList();
   }
-  //Adds Card to the List
+  //Adds A Card to the CardCollection
   public void addCard(Card C)
   {
     Contents.add(C);
   }
 
-  //Removes a Card from the List
+  //Removes All of a Specified Value from the CardCollection
   public ArrayList removeValues(int V)
   {
     ArrayList<Card> removedCards = new ArrayList();
@@ -35,7 +39,7 @@ public class CardCollection
     return removedCards;
   }
 
-  //Check if List Contains a Card
+  //Check if a CardCollection Contains a Value
   public Boolean containsValue(int V)
   {
     for(int i = 0; i < Contents.size(); i++)
@@ -45,19 +49,20 @@ public class CardCollection
         return true;
       }
     }
-
     return false;
   }
 
+  //Print Each Card within a CardCollection
   public void printCards()
   {
+    System.out.println("Your Hand:");
     for(int i = 0; i < Contents.size(); i++)
     {
       Card C = Contents.get(i);
-      System.out.print(C.getValue() + C.getSuit().toString() + " ");
+      System.out.print(C.getValue() + " " + C.getSuit().toString() + " ");
     }
 
-    System.out.println("");
+    System.out.print("\n\n");
   }
 
   public int cSize()
@@ -65,7 +70,7 @@ public class CardCollection
     return Contents.size();
   }
 
-  //Pops a Card from the List
+  //Pops a Card from CardCollection
   public Card draw()
   {
     Card C = Contents.get(0);
@@ -73,14 +78,19 @@ public class CardCollection
     return C;
   }
 
-  //Check for Sets of 4 within the List
-  /* An Absolute Mess Right Now, Definitely can be Improved */
+  //Check for Sets of 4 within the CardCollection
   public void checkSets()
   {
+    Dictionary Values;
 
+    for(int i = 0; i < Contents.size(); i++)
+    {
+
+    }
   }
 
-  public void populaDeck()
+  //Create and Add all 52 Standard Cards to the CardCollection
+  public void populateDeck()
   {
     //Plebian Cards
     for (int i = 2; i < 11; i++)
@@ -125,14 +135,14 @@ public class CardCollection
     Card kingClub = new Card(Suit.CLUB, 13);
     Contents.add(kingClub);
 
-    //Ace = 14
-    Card aceSpade = new Card(Suit.SPADE, 14);
+    //Ace = 1
+    Card aceSpade = new Card(Suit.SPADE, 1);
     Contents.add(aceSpade);
-    Card aceHeart = new Card(Suit.HEART, 14);
+    Card aceHeart = new Card(Suit.HEART, 1);
     Contents.add(aceHeart);
-    Card aceDiamond = new Card(Suit.DIAMOND, 14);
+    Card aceDiamond = new Card(Suit.DIAMOND, 1);
     Contents.add(aceDiamond);
-    Card aceClub = new Card(Suit.CLUB, 14);
+    Card aceClub = new Card(Suit.CLUB, 1);
     Contents.add(aceClub);
 
     Collections.shuffle(Contents);

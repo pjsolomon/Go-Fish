@@ -1,6 +1,8 @@
 import java.util.Scanner;
 import java.util.ArrayList;
 
+@SuppressWarnings("unchecked")
+
 public class GoFish
 {
   //FIELDS
@@ -8,6 +10,7 @@ public class GoFish
   public static CardCollection Deck;
   public static int Turn;
 
+  //A Function that Switches the Current Player at the End of a Turn
   public static void switchTurn()
   {
     if(Turn == 1)
@@ -19,6 +22,8 @@ public class GoFish
       Turn = 1;
     }
   }
+
+  //A Function that Returns the Index of the Non-Current Player
   public static int otherPlayer()
   {
     if(Turn == 1)
@@ -33,12 +38,8 @@ public class GoFish
 
   public static Boolean isGameOver()
   {
-    //game is over when all cards are in completed sets of 4
-    //thus, game is over when there are 52/4=13 sets
-
-    /***** NEED FUNCTION TO ACCESS PLAYERS # OF SETS *****/
-
-    if(true)//humanPlayer.sets + computerPlayer.sets == 13)
+    //Go Fish is Over when All Cards are in Completed Sets of 4 (13 Total Sets)
+    if(Players[0].getSets() + Players[1].getSets() == 13)
     {
       return true;
     }
@@ -49,6 +50,7 @@ public class GoFish
 
   }
 
+  //Add 7 Cards from the Deck to Each Player's Hand
   public static void populateHands()
   {
     Card C;
@@ -57,110 +59,105 @@ public class GoFish
     {
       C = Deck.draw();
       Players[0].addToHand(C);
-    }
-    for(int i = 0; i < 7; i++)
-    {
       C = Deck.draw();
       Players[1].addToHand(C);
     }
   }
 
+  //Go Fish is Played Within the Main Function
   public static void main(String[] args)
   {
 
+    //Initialize Each Player
     Player Player1 = new Player();
     Player Player2 = new Player();
 
+    //Add Each Player to the Players Array
     Players = new Player[2];
     Players[0] = Player1;
     Players[1] = Player2;
 
-    Deck.populaDeck();
+    //Initialize the Deck and Populate it with 52 Cards
+    Deck = new CardCollection();
+    Deck.populateDeck();
 
-    //MUST INITALIZE DECK AND PLAYERS' HANDS
+    //Populate Each Player's Hands
+    populateHands();
 
     /*
      * Anatomy of a Turn in Go Fish:
      *
-     * - turn begins
-     * - current player is shown their hand
-     * - current player is asked to declare a card
-     *    - card must be in player's hand
-     * - opposing player is asked if their hand contains that card
-     *    - opposing player tells the truth or lies
-     * - opposing player either has card or doesn't
-     *    - if yes, current player matches and goes again
-     *    - if no, current player draws from deck
-     *        - if drawn card creates a match, current player goes again
-     *        - otherwsise, current player's turn ends
+     * - Turn Begins
+     * - Current Player is Shown Their Hand
+     * - Current Player is Asked to Declare a Card
+     *    - Card must be in Player's Hand
+     * - Opposing Player is Asked if Their Hand Contains that Card
+     *    - Opposing Player Lies or Tells the Truth
+     * - Opposing Player's Does or Doesn't Contain Card
+     *    - If Yes, Current Player Recieves and Goes Again
+     *    - If No, Current Player 'Goes Fish' from Deck
+     *        - If Player Draws Declared Card, He Goes Again
+     *        - Otherwise, Current Player's Turn Ends
      */
 
-     //initialize scanner object
-     Scanner Reader = new Scanner(System.in);
-
+     //Initialize Some Variables to Use Later
      ArrayList<Card> removedCards = new ArrayList();
-
      int requestedValue;
-
      Card drawnCard;
-
-     //initalize boolean to determine if current player get an additional turns
      Boolean goAgain;
 
-
+     //Continue Playing as Long as There Are Cards Left in the Deck
      while(!isGameOver())
      {
        goAgain = true;
 
        while(goAgain)
        {
-          //if current player is human, call Player.showHand()
-          /***** NEED FUNCTION TO DETERMINE IF PLAYER IS HUMAN *****/
+          //Display the Cards in the Current Player's Hand
           Players[Turn].showHand();
 
-          //if current player is human, ask for a card, accept input
+          //Current Player must Declare Value
           requestedValue = Players[Turn].requestCard();
 
-          //run checkHand() on non-current player
-          /***** NEED FUNCTION TO CHECK COLLECTION FOR CERTAIN CARDS *****/
+          //Check Whether Non-Current Player has Value in Their Hand
           if(Players[otherPlayer()].checkHand(requestedValue))
           {
-            //switch card from hands
-            /***** NEED FUNCTION TO REMOVE CARD FROM A COLLECTION *****/
+            //Remove Appropriate Cards from Non-Current Player's Hand
             removedCards = Players[otherPlayer()].popFromHand(requestedValue);
-            /***** NEED FUNCTION TO ADD CARD TO A COLLECTION *****/
+            //Add Those Cards to Current Player's Hand
             for(int i = 0; i < removedCards.size(); i++)
             {
               Players[Turn].addToHand(removedCards.get(i));
             }
-
+            //Current Player Gets Another Turn
             goAgain = true;
           }
+          //Declared Card is Not in Non-Current Player's Hand
           else
           {
-            //current player draws from deck
+            System.out.println("Go Fish!");
+
+            //Current Player Draws from Decks
             drawnCard = Deck.draw();
             Players[Turn].addToHand(drawnCard);
 
-            /***** NEED FUNCTION TO CHECK CARD EQUIVALENCE *****/
+            //If Value of Drawn Card Matches Declared Value, Player Goes Again
             if(drawnCard.getValue() == requestedValue)
             {
-              /***** NEED FUNCTION TO CHECK FOR SETS WITHIN A COLLECTION *****/
-              //check for sets of 4
+              //CHECK FOR SET OF 4
               goAgain = true;
             }
+            //Otherwise, Their Turn Ends
             else
             {
-              //check for sets of 4
-              /***** NEED FUNCTION TO CHECK FOR SETS WITHIN A COLLECTION *****/
+              //CHECK FOR SET OF 4
               goAgain = false;
             }
           }
       }
-
       switchTurn();
     }
 
-    //Display some output at the end of the game
+    //Display Some Output At The End of The Game
   }
 }
