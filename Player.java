@@ -2,6 +2,7 @@
 // 09/22/2018
 
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Player
 {
@@ -33,7 +34,7 @@ public class Player
 		hand.addCard(C);
 	}
 
-	public CardCollection popFromHand(int V)
+	public ArrayList<Card> popFromHand(int V)
 	{
 		return hand.removeValues(V);
 	}

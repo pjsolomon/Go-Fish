@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class GoFish
 {
@@ -79,7 +80,7 @@ public class GoFish
      //initialize scanner object
      Scanner Reader = new Scanner(System.in);
 
-     ArrayList<Card> removedCards;
+     ArrayList<Card> removedCards = new ArrayList();
 
      int requestedValue;
 
@@ -110,7 +111,7 @@ public class GoFish
             /***** NEED FUNCTION TO REMOVE CARD FROM A COLLECTION *****/
             removedCards = Players[otherPlayer()].popFromHand(requestedValue);
             /***** NEED FUNCTION TO ADD CARD TO A COLLECTION *****/
-            for(int i = 0; i < removedCards.cSize(); i++)
+            for(int i = 0; i < removedCards.size(); i++)
             {
               Players[Turn].addToHand(removedCards.get(i));
             }
