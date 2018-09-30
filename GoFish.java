@@ -68,7 +68,7 @@ public class GoFish
 
     //Initialize Each Player
     Player Player1 = new Player();
-    Player Player2 = new Player();
+    Player Player2 = new ComputerPlayer(2,0);
 
     //Add Each Player to the Players Array
     Players = new Player[2];

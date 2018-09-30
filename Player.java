@@ -110,7 +110,10 @@ public class Player
 			String Input = Reader.next();
 			System.out.println("");
 			// Trim the string for the switch
-			String caseSelector = Input.trim().toLowerCase().substring(0,3);
+			String caseSelector = Input.trim().toLowerCase();
+			if(caseSelector.length() > 2){
+				caseSelector = caseSelector.substring(0,2);
+			}
 			// This switch interprets the first 3 characters in the returned string.
 			// Accepts numbers, number words, and face card names.
 			// Sets this function's returnValue
