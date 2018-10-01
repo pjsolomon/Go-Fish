@@ -16,8 +16,37 @@ class Card {
         return this.suit;
     }
 
-    int getValue() {
-        return this.value;
+    int getValue() { return this.value;
+    }
+
+/* isFace take in the value of the card and does a
+   conversion from int to string for face cards
+ */
+
+    public String isFace(int value){
+
+        String faceCard = Integer.toString(value);
+
+        switch (value){
+            case 1 :
+                faceCard = "Ace";
+                return faceCard;
+
+            case 11 :
+                faceCard = "Jack";
+                return faceCard;
+
+            case 12 :
+                faceCard = "Queen";
+                return faceCard;
+
+            case 13 :
+                faceCard = "King";
+                return faceCard;
+
+        }
+  return faceCard;
+
     }
 
     void setSuit(Suit suit) {
@@ -32,4 +61,6 @@ class Card {
       System.out.println(value + " " + suit);
       System.out.println("");
     }
+
+
 }
