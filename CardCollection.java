@@ -77,14 +77,36 @@ public class CardCollection
   }
 
   //Check for Sets of 4 within the CardCollection
-  public void checkSets()
+  public int removeSets()
   {
-    Dictionary Values;
+    int setValue = 0;
+    int[] V = new int[14];
 
-    for(int i = 0; i < Contents.size(); i++)
+    for(int i = 0; i < V.length; i++)
     {
-
+      V[i] = 0;
     }
+
+    for(int j = 0; j < Contents.size(); j++)
+    {
+      int val = Contents.get(j).getValue();
+      V[val] = V[val] + 1;
+    }
+
+    Iterator itr = Contents.iterator();
+
+
+    while(itr.hasNext())
+    {
+      Card C = (Card) itr.next();
+      if(V[C.getValue()] == 4)
+      {
+        itr.remove();
+        setValue = C.getValue();
+      }
+    }
+
+    return setValue;
   }
 
   //Create and Add all 52 Standard Cards to the CardCollection
