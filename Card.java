@@ -1,4 +1,4 @@
-enum Suit {SPADE, CLUB, DIAMOND, HEART}
+enum Suit {SPADES, CLUBS, DIAMONDS, HEARTS}
 enum Face {NONE, JACK, QUEEN, KING, ACE}
 
 class Card {
@@ -16,8 +16,7 @@ class Card {
         return this.suit;
     }
 
-    int getValue() { return this.value;
-    }
+    int getValue() { return this.value; }
 
 /* isFace take in the value of the card and does a
    conversion from int to string for face cards
@@ -58,7 +57,7 @@ class Card {
     }
 
     void printCard() {
-      System.out.println(value + " " + suit);
+      System.out.println(value + " OF " + suit);
       System.out.println("");
     }
 

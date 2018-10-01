@@ -115,54 +115,54 @@ public class CardCollection
     //Plebian Cards
     for (int i = 2; i < 11; i++)
     {
-      Card spades = new Card(Suit.SPADE, i);
+      Card spades = new Card(Suit.SPADES, i);
       Contents.add(spades);
-      Card hearts = new Card(Suit.HEART, i);
+      Card hearts = new Card(Suit.HEARTS, i);
       Contents.add(hearts);
-      Card diamonds = new Card(Suit.DIAMOND, i);
+      Card diamonds = new Card(Suit.DIAMONDS, i);
       Contents.add(diamonds);
-      Card clubs = new Card(Suit.CLUB, i);
+      Card clubs = new Card(Suit.CLUBS, i);
       Contents.add(clubs);
     }
     //Face Cards
     //Jack = 11
-    Card jackSpade = new Card(Suit.SPADE, 11);
+    Card jackSpade = new Card(Suit.SPADES, 11);
     Contents.add(jackSpade);
-    Card jackHeart = new Card(Suit.HEART, 11);
+    Card jackHeart = new Card(Suit.HEARTS, 11);
     Contents.add(jackHeart);
-    Card jackDiamond = new Card(Suit.DIAMOND, 11);
+    Card jackDiamond = new Card(Suit.DIAMONDS, 11);
     Contents.add(jackDiamond);
-    Card jackClub = new Card(Suit.CLUB, 11);
+    Card jackClub = new Card(Suit.CLUBS, 11);
     Contents.add(jackClub);
 
     //Queen = 12
-    Card queenSpade = new Card(Suit.SPADE, 12);
+    Card queenSpade = new Card(Suit.SPADES, 12);
     Contents.add(queenSpade);
-    Card queenHeart = new Card(Suit.HEART, 12);
+    Card queenHeart = new Card(Suit.HEARTS, 12);
     Contents.add(queenHeart);
-    Card queenDiamond = new Card(Suit.DIAMOND, 12);
+    Card queenDiamond = new Card(Suit.DIAMONDS, 12);
     Contents.add(queenDiamond);
-    Card queenClub = new Card(Suit.CLUB, 12);
+    Card queenClub = new Card(Suit.CLUBS, 12);
     Contents.add(queenClub);
 
     //King = 13
-    Card kingSpade = new Card(Suit.SPADE, 13);
+    Card kingSpade = new Card(Suit.SPADES, 13);
     Contents.add(kingSpade);
-    Card kingHeart = new Card(Suit.HEART, 13);
+    Card kingHeart = new Card(Suit.HEARTS, 13);
     Contents.add(kingHeart);
-    Card kingDiamond = new Card(Suit.DIAMOND, 13);
+    Card kingDiamond = new Card(Suit.DIAMONDS, 13);
     Contents.add(kingDiamond);
-    Card kingClub = new Card(Suit.CLUB, 13);
+    Card kingClub = new Card(Suit.CLUBS, 13);
     Contents.add(kingClub);
 
     //Ace = 1
-    Card aceSpade = new Card(Suit.SPADE, 1);
+    Card aceSpade = new Card(Suit.SPADES, 1);
     Contents.add(aceSpade);
-    Card aceHeart = new Card(Suit.HEART, 1);
+    Card aceHeart = new Card(Suit.HEARTS, 1);
     Contents.add(aceHeart);
-    Card aceDiamond = new Card(Suit.DIAMOND, 1);
+    Card aceDiamond = new Card(Suit.DIAMONDS, 1);
     Contents.add(aceDiamond);
-    Card aceClub = new Card(Suit.CLUB, 1);
+    Card aceClub = new Card(Suit.CLUBS, 1);
     Contents.add(aceClub);
 
     Collections.shuffle(Contents);
