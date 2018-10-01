@@ -46,6 +46,18 @@ public class Player
 		return completedSets;
 	}
 
+	public void checkSets()
+	{
+		int g = hand.removeSets();
+
+		if(g > 0)
+		{
+			System.out.println("You got 4 " + g + "s!");
+		}
+
+		completedSets = completedSets + 1;
+
+	}
 	/**
 	 * checkHand
 	 * Asks the player if he has a specific card. Allows player to lie.

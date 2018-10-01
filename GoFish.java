@@ -128,6 +128,8 @@ public class GoFish
               Players[Turn].addToHand(removedCards.get(i));
             }
 
+            Players[Turn].checkSets();
+
             System.out.println("Good guess! Go again!\n");
             //Current Player Gets Another Turn
             goAgain = true;
@@ -148,14 +150,14 @@ public class GoFish
             if(drawnCard.getValue() == requestedValue)
             {
               System.out.print("It's a match! ");
-              //CHECK FOR SET OF 4
+              Players[Turn].checkSets();
               goAgain = true;
               System.out.println("Go Again!\n");
             }
             //Otherwise, Their Turn Ends
             else
             {
-              //CHECK FOR SET OF 4
+              Players[Turn].checkSets();
               goAgain = false;
             }
           }
