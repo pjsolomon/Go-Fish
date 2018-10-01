@@ -29,10 +29,12 @@ public class ComputerPlayer extends Player {
 	 * Overwrites the Player's Function to Show Hand. Since this is the computer, we show nothing.
 	 * @return string showing nothing.
 	 */
+	 /*
 	public void showHand()
 	{
 		System.out.println("");
 	}
+	*/
 
 	/**
 	 * checkHand
@@ -78,7 +80,7 @@ public class ComputerPlayer extends Player {
 						return returnValue;
 					}
 				}
-				
+
 			case 2:
 				// First, Ask for cards other player asked for previously
 				for(int i : askedCardsMemory){
