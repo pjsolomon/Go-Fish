@@ -59,9 +59,9 @@ public class CardCollection
       Card C = Contents.get(i);
       //Different Print methods for formatting purposes
       if(C.getValue() < 10) {
-        System.out.println(C.getValue() + "  of " + C.getSuit().toString() + " ");
+        System.out.println(C.isFace(C.getValue()) + "  of " + C.getSuit().toString() + " ");
       } else {
-        System.out.println(C.getValue() + " of " + C.getSuit().toString() + " ");
+        System.out.println(C.isFace(C.getValue()) + " of " + C.getSuit().toString() + " ");
 
       }
     }

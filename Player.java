@@ -65,6 +65,7 @@ public class Player
 	 * @return Boleen True if card is in ComputerPlayer's hand, false otherwise
 	 */
 	public Boolean checkHand (int cardValue){
+		Card c = new Card(Suit.SPADES, 10); //Dummy object
 		Boolean isInHand = false;
 		Boolean continueToLoop = true;
 
@@ -72,7 +73,7 @@ public class Player
 
 		while(continueToLoop){
 			//Need some function to call from the interface to ask the operator if they have 'cardValue'
-			System.out.println("Do you have any " + cardValue + "s? (Y/N): ");
+			System.out.println("Do you have any " + c.isFace(cardValue) + "s? (Y/N): ");
 			String Input = Reader.next();
 			System.out.println("");
 
