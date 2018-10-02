@@ -28,7 +28,6 @@ public class Deck {
         }
     }
 
-
     //This method creates a clean deck of 52 cards
     public ArrayList<Card> initializeDeck() {
 

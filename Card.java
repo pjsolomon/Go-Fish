@@ -57,7 +57,7 @@ class Card {
     }
 
     void printCard() {
-      System.out.println(value + " OF " + suit);
+      System.out.println(value + " of " + suit);
       System.out.println("");
     }
 

@@ -57,10 +57,16 @@ public class CardCollection
     for(int i = 0; i < Contents.size(); i++)
     {
       Card C = Contents.get(i);
-      System.out.print(C.getValue() + " " + C.getSuit().toString() + " ");
+      //Different Print methods for formatting purposes
+      if(C.getValue() < 10) {
+        System.out.println(C.getValue() + "  of " + C.getSuit().toString() + " ");
+      } else {
+        System.out.println(C.getValue() + " of " + C.getSuit().toString() + " ");
+
+      }
     }
 
-    System.out.print("\n\n");
+    System.out.print("\n");
   }
 
   public int cSize()
@@ -75,6 +81,7 @@ public class CardCollection
     Contents.remove(0);
     return C;
   }
+
 
   //Check for Sets of 4 within the CardCollection
   public int removeSets()
