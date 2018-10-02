@@ -160,8 +160,20 @@ public class GoFish
       }
     }
 
+    String name;
+    System.out.println("");
+    System.out.println("Enter Your Name:");
+    name = Reader.next();
+    while(name.length() > 15)
+    {
+      System.out.println("Sorry, Your Name Must Be 15 or Less Characters.");
+      System.out.println("Enter Your Name:");
+      name = Reader.next();
+    }
+    System.out.println("");
+
     //Initialize Each Player
-    Player Player1 = new Player();
+    Player Player1 = new Player(name);
     Player Player2 = new ComputerPlayer(Intelligence,lieFreq);
 
     //Add Each Player to the Players Array
@@ -206,7 +218,9 @@ public class GoFish
 
        while(goAgain)
        {
-         //Display the Cards in the Current Player's Hand
+          System.out.println("-=-=-=-=-= " + Players[Turn].getName() + "'s Turn =-=-=-=-=-\n");
+
+          //Display the Cards in the Current Player's Hand
           Players[Turn].showHand();
 
           //Current Player must Declare Value
@@ -235,7 +249,7 @@ public class GoFish
           //Declared Card is Not in Non-Current Player's Hand
           else
           {
-            System.out.println("Go Fish!");
+            System.out.println("Go Fish!\n");
 
             //Current Player Draws from Decks
             drawnCard = Deck.draw();

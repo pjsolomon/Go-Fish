@@ -34,7 +34,7 @@ public class ComputerPlayer extends Player {
 
 	public void showHand()
 	{
-		System.out.println("");
+		System.out.print("");
 	}
 
 	public void addToHand(Card C)
