@@ -1,5 +1,6 @@
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class GoFish
 {
@@ -68,12 +69,50 @@ public class GoFish
 
     //Clear the User's Screen
     System.out.print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+    /*
+    Bob must hand over all cards of that rank if possible.
+    If he has none, Bob tells Alice to "go fish" (or just simply "fish"),
+    and Alice draws a card from the pool and places it in her own hand.
+    Then it is the next player's turn – unless the card Alice drew is the card she asked for,
+    in which case she shows it to the other players, and she gets another turn.
+    When any player at any time has all four cards of one face value, it forms a book,
+    and the cards must be placed face up in front of that player.
+    */
+
+    System.out.println("-=-=-=-=-=-=-=-=-=-= Welcome To Go Fish! =-=-=-=-=-=-=-=-=-=-");
+    System.out.println("\nHere's How To Play...\n");
+    System.out.println("- The Game Consists of 2 Players: You and the Computer");
+    System.out.println("- Each Player Begin with 7 Cards in Their Hand");
+    System.out.println("- Players Take Turns Asking if Their Opponent Has a Particular Rank in Their Hand");
+    System.out.println("\t- Players Can Only Ask for Ranks in Their Own Hand");
+    System.out.println("- For Example, You Could Ask the Computer 'Do You Have Any 3s?'");
+    System.out.println("- The Computer Must Hand Over All Cards of that Rank, If Possible");
+    System.out.println("\t- In Which Case, You Get Another Turn");
+    System.out.println("- If the Computer Has No Such Cards, You Must 'Go Fish'");
+    System.out.println("\t- You'll Draw a Card From the Deck and Add it to Your Hand");
+    System.out.println("\t- If the Card You Draw is of the Rank You Asked For, You'll Go Again");
+    System.out.println("- After You Go Fish, It Becomes the Computer's Turn");
+    System.out.println("");
+    System.out.println("- At Any Time, If a Player has All 4 Cards of a Rank in Their Hand, It Forms a Book");
+    System.out.println("\t- That Player Takes those 4 Cards Out of Their Hand and Sets them Aside");
+    System.out.println("- Play Proceeds Until All Cards are in Books");
+    System.out.println("- At That Point, Whichever Player has the Most Books is the Winner");
+    System.out.println("");
+    System.out.println("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
+
+    System.out.println("");
+    System.out.println("");
+
+    System.out.println("The Computer has Two Memory Modes: Normal and Smart");
+    System.out.println("(1) Normal: The Computer Has No Memory of Your Guesses");
+    System.out.println("(2)  Smart: The Computer Has Perfect Memory of Your Guesses");
+
     //Create a Scanner to Read User's Input
     Scanner Reader = new Scanner(System.in);
     String Input;
     //Ensure that User's Input is Either 1 or 2
     int Intelligence;
-    System.out.println("Select Computer Intellegence");
+    System.out.println("Which Computer Would You Like to Face? (Enter 1 or 2)");
     while(true)
     {
       try
@@ -92,23 +131,32 @@ public class GoFish
       }
     }
     //Ensure that User's Input is an Integer Between 0 and 100
+    System.out.println("Also, Sometimes the Computer Will Lie to You. You Decide How Often it Lies");
     int lieFreq;
-    System.out.println("Enter Computer Lie Frequency");
+    System.out.println("Enter How Often You'd Like the Computer to Lie");
+    System.out.println("For Example, Entering 50 Would Cause the Computer to Lie Half the Time");
+    System.out.println("Enter 'R' if You Want a Random Percentage!");
+    Random randNum = new Random();
     while(true)
     {
       try
       {
         Input = Reader.next();
+        if(Input.equals("R") | Input.equals("r"))
+        {
+          lieFreq = randNum.nextInt(100);
+          break;
+        }
         lieFreq = Integer.parseInt(Input);
         if(lieFreq >= 0 & lieFreq <= 100)
         {
           break;
         }
-        else { System.out.println("Input Must Be Between 0 and 100."); }
+        else { System.out.println("Input Must Be Between 0 and 100 (Or 'R' For Random)."); }
       }
       catch (Exception e)
       {
-        System.out.println("Please Enter an Integer.");
+        System.out.println("Please Enter an Integer (Or 'R' For Random).");
       }
     }
 
