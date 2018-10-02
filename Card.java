@@ -1,7 +1,15 @@
+
+import java.io.IOException;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+
+
 enum Suit {SPADES, CLUBS, DIAMONDS, HEARTS}
-enum Face {NONE, JACK, QUEEN, KING, ACE}
+
+
 
 class Card {
+
 
 
     private int value;
@@ -59,7 +67,23 @@ class Card {
     void printCard() {
       System.out.println(isFace(value) + " of " + suit);
       System.out.println("");
+        try {
+            writeCardToFile("GO FISH! Player drew a: " + isFace(value));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
+
+    /* writing to a file logic from
+       https://www.baeldung.com/java-write-to-file
+    */
+    public static void writeCardToFile(String s)
+            throws IOException {
+        BufferedWriter writer = new BufferedWriter(new FileWriter("output", true));
+        writer.write(s);
+        writer.newLine();
+        writer.close();
+    }
 
 }

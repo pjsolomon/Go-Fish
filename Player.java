@@ -1,6 +1,7 @@
 // Player class
 // 09/22/2018
 
+import java.io.IOException;
 import java.util.Scanner;
 import java.util.ArrayList;
 
@@ -121,6 +122,11 @@ public class Player
 			// somehow, and the function will return the inputed value.
 			System.out.println("What card will you ask for? ");
 			String Input = Reader.next();
+            try {
+                Card.writeCardToFile("Asked for: " + Input);
+            }catch (IOException e) {
+                e.printStackTrace();
+            }
 			System.out.println("");
 			// Trim the string for the switch
 			String caseSelector = Input.trim().toLowerCase();

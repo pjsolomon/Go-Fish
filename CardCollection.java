@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Collections;
@@ -54,14 +55,30 @@ public class CardCollection
   public void printCards()
   {
     System.out.println("Your Hand:");
+    try {
+        Card.writeCardToFile("\n Player's hand: ");
+    }catch (IOException e) {
+        e.printStackTrace();
+  }
     for(int i = 0; i < Contents.size(); i++)
     {
       Card C = Contents.get(i);
       //Different Print methods for formatting purposes
       if(C.getValue() < 10) {
+
         System.out.println(C.isFace(C.getValue()) + "  of " + C.getSuit().toString() + " ");
+          try {
+              Card.writeCardToFile(C.isFace(C.getValue()) + " of " +  C.getSuit().toString());
+          } catch (IOException e) {
+              e.printStackTrace();
+          }
       } else {
         System.out.println(C.isFace(C.getValue()) + " of " + C.getSuit().toString() + " ");
+        try {
+              Card.writeCardToFile(C.isFace(C.getValue()) + " of " + C.getSuit().toString());
+          } catch (IOException e) {
+              e.printStackTrace();
+          }
 
       }
     }

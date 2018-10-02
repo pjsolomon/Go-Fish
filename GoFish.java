@@ -111,7 +111,7 @@ public class GoFish
 
        while(goAgain)
        {
-          //Display the Cards in the Current Player's Hand
+         //Display the Cards in the Current Player's Hand
           Players[Turn].showHand();
 
           //Current Player must Declare Value
@@ -144,7 +144,6 @@ public class GoFish
             Players[Turn].addToHand(drawnCard);
             System.out.print("You drew a ");
             drawnCard.printCard();
-
 
             //If Value of Drawn Card Matches Declared Value, Player Goes Again
             if(drawnCard.getValue() == requestedValue)
