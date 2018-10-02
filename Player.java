@@ -133,8 +133,11 @@ public class Player
 			// Accepts numbers, number words, and face card names.
 			// Sets this function's returnValue
 			switch (caseSelector) {
+				case "quit":
+					returnValue = -1;
+					break;
 				case "1":
-				case "one":
+				case "a":
 				case "ace":
 					returnValue = 1;
 					break;
@@ -175,17 +178,17 @@ public class Player
 					returnValue = 10;
 					break;
 				case "11":
-				case "eleven":
+				case "j":
 				case "jack":
 					returnValue = 11;
 					break;
 				case "12":
-				case "twelve":
+				case "q":
 				case "queen":
 					returnValue = 12;
 					break;
 				case "13":
-				case "thirteen":
+				case "k":
 				case "king":
 					returnValue = 13;
 					break;
@@ -195,7 +198,7 @@ public class Player
 			}
 
 			// Make sure the player can only ask for cards they already have.
-			if(!this.hand.containsValue(returnValue))
+			if(!this.hand.containsValue(returnValue) & returnValue != -1)
 			{
 				returnValue = 0;
 				System.out.println("You do not have this card in your hand. Please ask for a card value that you already have in your hand.");

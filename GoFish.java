@@ -66,9 +66,55 @@ public class GoFish
   public static void main(String[] args)
   {
 
+    //Clear the User's Screen
+    System.out.print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+    //Create a Scanner to Read User's Input
+    Scanner Reader = new Scanner(System.in);
+    String Input;
+    //Ensure that User's Input is Either 1 or 2
+    int Intelligence;
+    System.out.println("Select Computer Intellegence");
+    while(true)
+    {
+      try
+      {
+        Input = Reader.next();
+        Intelligence = Integer.parseInt(Input);
+        if(Intelligence == 1 | Intelligence == 2)
+        {
+          break;
+        }
+        else { System.out.println("Please Select Either Option 1 or 2."); }
+      }
+      catch (Exception e)
+      {
+        System.out.println("Please Enter an Integer.");
+      }
+    }
+    //Ensure that User's Input is an Integer Between 0 and 100
+    int lieFreq;
+    System.out.println("Enter Computer Lie Frequency");
+    while(true)
+    {
+      try
+      {
+        Input = Reader.next();
+        lieFreq = Integer.parseInt(Input);
+        if(lieFreq >= 0 & lieFreq <= 100)
+        {
+          break;
+        }
+        else { System.out.println("Input Must Be Between 0 and 100."); }
+      }
+      catch (Exception e)
+      {
+        System.out.println("Please Enter an Integer.");
+      }
+    }
+
     //Initialize Each Player
     Player Player1 = new Player();
-    Player Player2 = new ComputerPlayer(2,0);
+    Player Player2 = new ComputerPlayer(Intelligence,lieFreq);
 
     //Add Each Player to the Players Array
     Players = new Player[2];
@@ -81,6 +127,12 @@ public class GoFish
 
     //Populate Each Player's Hands
     populateHands();
+
+    //Initialize Some Variables to Use Later
+    ArrayList<Card> removedCards = new ArrayList<Card>();
+    int requestedValue;
+    Card drawnCard;
+    Boolean goAgain;
 
     /*
      * Anatomy of a Turn in Go Fish:
@@ -98,13 +150,8 @@ public class GoFish
      *        - Otherwise, Current Player's Turn Ends
      */
 
-     //Initialize Some Variables to Use Later
-     ArrayList<Card> removedCards = new ArrayList<Card>();
-     int requestedValue;
-     Card drawnCard;
-     Boolean goAgain;
-
      //Continue Playing as Long as There Are Cards Left in the Deck
+     Game:
      while(!isGameOver())
      {
        goAgain = true;
@@ -116,7 +163,10 @@ public class GoFish
 
           //Current Player must Declare Value
           requestedValue = Players[Turn].requestCard();
-
+          if(requestedValue == -1)
+          {
+            break Game;
+          }
           //Check Whether Non-Current Player has Value in Their Hand
           if(Players[otherPlayer()].checkHand(requestedValue))
           {
@@ -163,7 +213,13 @@ public class GoFish
       }
       switchTurn();
     }
-
-    //Display Some Output At The End of The Game
+    if(isGameOver())
+    {
+      //Display Some Output At The End of The Game
+    }
+    else
+    {
+      System.out.println("Thanks For Playing!\n");
+    }
   }
 }
