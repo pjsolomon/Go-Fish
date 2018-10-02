@@ -130,10 +130,6 @@ public class Player
 			System.out.println("");
 			// Trim the string for the switch
 			String caseSelector = Input.trim().toLowerCase();
-			if(caseSelector.length() > 2){
-				caseSelector = caseSelector.substring(0,2);
-			}
-			// This switch interprets the first 3 characters in the returned string.
 			// Accepts numbers, number words, and face card names.
 			// Sets this function's returnValue
 			switch (caseSelector) {
@@ -147,15 +143,15 @@ public class Player
 					returnValue = 2;
 					break;
 				case "3":
-				case "thr":
+				case "three":
 					returnValue = 3;
 					break;
 				case "4":
-				case "fou":
+				case "four":
 					returnValue = 4;
 					break;
 				case "5":
-				case "fiv":
+				case "five":
 					returnValue = 5;
 					break;
 				case "6":
@@ -163,15 +159,15 @@ public class Player
 					returnValue = 6;
 					break;
 				case "7":
-				case "sev":
+				case "seven":
 					returnValue = 7;
 					break;
 				case "8":
-				case "eig":
+				case "eight":
 					returnValue = 8;
 					break;
 				case "9":
-				case "nin":
+				case "nine":
 					returnValue = 9;
 					break;
 				case "10":
@@ -179,18 +175,18 @@ public class Player
 					returnValue = 10;
 					break;
 				case "11":
-				case "ele":
+				case "eleven":
 				case "jac":
 					returnValue = 11;
 					break;
 				case "12":
-				case "twe":
-				case "que":
+				case "twelve":
+				case "queen":
 					returnValue = 12;
 					break;
 				case "13":
-				case "thi":
-				case "kin":
+				case "thirteen":
+				case "king":
 					returnValue = 13;
 					break;
 				default:
