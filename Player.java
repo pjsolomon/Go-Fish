@@ -113,7 +113,6 @@ public class Player
 	 * @return Value of card they want. (Right Now using 1-13. Will interpret face card letters to numbers)
 	 */
 	public int requestCard (){
-		Boolean continueToLoop = true;
 		int returnValue = 0;
 		Scanner Reader = new Scanner(System.in);
 		while(returnValue == 0){
