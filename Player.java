@@ -53,6 +53,16 @@ public class Player
 		hand.printCards();
 	}
 
+	public boolean isEmpty()
+	{
+		if(hand.cSize() == 0){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+
 	public void addToHand(Card C, boolean Print)
 	{
 		hand.addCard(C);
@@ -83,10 +93,8 @@ public class Player
 			completedSets = completedSets + 1;
 			System.out.println(name + " Now Has " + completedSets + " Books!");
 		}
-
-
-
 	}
+	
 	/**
 	 * checkHand
 	 * Asks the player if he has a specific card. Allows player to lie.

@@ -17,7 +17,7 @@ public class ComputerPlayer extends Player {
 	 * @param lieFrequency What percentage of the computer's responses will be lies.
 	 */
 	public ComputerPlayer(int intelligence, int lieFrequency) {
-		super.name = "COMPUTER";
+		super.name = "Computer";
 		isHuman = false;
 		computerPlayerIntelligence = intelligence;
 		computerPlayerLieFrequency = lieFrequency;

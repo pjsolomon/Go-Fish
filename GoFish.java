@@ -50,16 +50,15 @@ public class GoFish
   }
 
   //Add 7 Cards from the Deck to Each Player's Hand
-  public static void populateHands()
+  public static void populateHand(Player P)
   {
     Card C;
-
-    for(int i = 0; i < 7; i++)
+    int limit = 0;
+    while(Deck.cSize() > 0 & limit < 7)
     {
       C = Deck.draw();
-      Players[0].addToHand(C, false);
-      C = Deck.draw();
-      Players[1].addToHand(C, false);
+      P.addToHand(C, false);
+      limit++;
     }
   }
 
@@ -186,7 +185,10 @@ public class GoFish
     Deck.populateDeck();
 
     //Populate Each Player's Hands
-    populateHands();
+    populateHand(Players[0]);
+    Players[0].checkSets();
+    populateHand(Players[1]);
+    Players[1].checkSets();
 
     //Initialize Some Variables to Use Later
     ArrayList<Card> removedCards = new ArrayList<Card>();
@@ -219,6 +221,24 @@ public class GoFish
        while(goAgain)
        {
           System.out.println("-=-=-=-=-= " + Players[Turn].getName() + "'s Turn =-=-=-=-=-\n");
+          if(Players[0].isEmpty() & Players[1].isEmpty() & Deck.cSize()==0)
+          {
+            break;
+          }
+
+          if(Players[Turn].isEmpty())
+          {
+            populateHand(Players[Turn]);
+            Players[Turn].checkSets();
+            System.out.println("- " + Players[Turn].getName() + " Replenished Their Hand From the Deck -");
+          }
+
+          if(Players[otherPlayer()].isEmpty())
+          {
+            populateHand(Players[Turn]);
+            Players[otherPlayer()].checkSets();
+            System.out.println("- " + Players[otherPlayer()].getName() + " Replenished Their Hand From the Deck -");
+          }
 
           //Display the Cards in the Current Player's Hand
           Players[Turn].showHand();
@@ -249,25 +269,27 @@ public class GoFish
           //Declared Card is Not in Non-Current Player's Hand
           else
           {
-            System.out.println("Go Fish!\n");
-
-            //Current Player Draws from Decks
-            drawnCard = Deck.draw();
-            Players[Turn].addToHand(drawnCard, Players[Turn].isHuman());
-
-            //If Value of Drawn Card Matches Declared Value, Player Goes Again
-            if(drawnCard.getValue() == requestedValue)
+            if(Deck.cSize() > 0)
             {
-              System.out.print("It's a match! ");
-              Players[Turn].checkSets();
-              goAgain = true;
-              System.out.println("Go Again!\n");
-            }
-            //Otherwise, Their Turn Ends
-            else
-            {
-              Players[Turn].checkSets();
-              goAgain = false;
+              //Current Player Draws from Decks
+              System.out.println("Go Fish!\n");
+              drawnCard = Deck.draw();
+              Players[Turn].addToHand(drawnCard, Players[Turn].isHuman());
+
+              //If Value of Drawn Card Matches Declared Value, Player Goes Again
+              if(drawnCard.getValue() == requestedValue)
+              {
+                System.out.print("It's a match! ");
+                Players[Turn].checkSets();
+                goAgain = true;
+                System.out.println("Go Again!\n");
+              }
+              //Otherwise, Their Turn Ends
+              else
+              {
+                Players[Turn].checkSets();
+                goAgain = false;
+              }
             }
           }
       }
@@ -275,7 +297,16 @@ public class GoFish
     }
     if(isGameOver())
     {
-      //Display Some Output At The End of The Game
+      int humSets = Players[0].getSets();
+      int comSets = Players[1].getSets();
+      if(humSets > comSets)
+      {
+        System.out.println(Players[0].getName() + " Wins With " + humSets + " Sets!");
+      }
+      else
+      {
+        System.out.println("Computer Wins With " + comSets + " Books!");
+      }
     }
     else
     {
