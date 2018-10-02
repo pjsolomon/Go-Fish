@@ -80,7 +80,7 @@ class Card {
     */
     public static void writeCardToFile(String s)
             throws IOException {
-        BufferedWriter writer = new BufferedWriter(new FileWriter("output", true));
+        BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt", true));
         writer.write(s);
         writer.newLine();
         writer.close();

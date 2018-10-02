@@ -176,7 +176,7 @@ public class Player
 					break;
 				case "11":
 				case "eleven":
-				case "jac":
+				case "jack":
 					returnValue = 11;
 					break;
 				case "12":
