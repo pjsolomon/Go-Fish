@@ -32,9 +32,14 @@ public class Player
 		hand.printCards();
 	}
 
-	public void addToHand(Card C)
+	public void addToHand(Card C, boolean Print)
 	{
 		hand.addCard(C);
+		if(Print)
+		{
+			System.out.print("You Drew a ");
+			C.printCard();
+		}
 	}
 
 	public ArrayList<Card> popFromHand(int V)

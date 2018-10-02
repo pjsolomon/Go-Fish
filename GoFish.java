@@ -57,9 +57,9 @@ public class GoFish
     for(int i = 0; i < 7; i++)
     {
       C = Deck.draw();
-      Players[0].addToHand(C);
+      Players[0].addToHand(C, false);
       C = Deck.draw();
-      Players[1].addToHand(C);
+      Players[1].addToHand(C, false);
     }
   }
 
@@ -223,7 +223,7 @@ public class GoFish
             //Add Those Cards to Current Player's Hand
             for(int i = 0; i < removedCards.size(); i++)
             {
-              Players[Turn].addToHand(removedCards.get(i));
+              Players[Turn].addToHand(removedCards.get(i), false);
             }
 
             Players[Turn].checkSets();
@@ -239,9 +239,7 @@ public class GoFish
 
             //Current Player Draws from Decks
             drawnCard = Deck.draw();
-            Players[Turn].addToHand(drawnCard);
-            System.out.print("You drew a ");
-            drawnCard.printCard();
+            Players[Turn].addToHand(drawnCard, true);
 
             //If Value of Drawn Card Matches Declared Value, Player Goes Again
             if(drawnCard.getValue() == requestedValue)

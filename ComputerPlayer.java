@@ -36,6 +36,11 @@ public class ComputerPlayer extends Player {
 	}
 	*/
 
+	public void addToHand(Card C)
+	{
+		hand.addCard(C);
+	}
+
 	/**
 	 * checkHand
 	 * Accepts a card value, then checks the ComputerPlayer's hand for that value.
