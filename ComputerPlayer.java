@@ -17,6 +17,8 @@ public class ComputerPlayer extends Player {
 	 * @param lieFrequency What percentage of the computer's responses will be lies.
 	 */
 	public ComputerPlayer(int intelligence, int lieFrequency) {
+		super.name = "COMPUTER";
+		isHuman = false;
 		computerPlayerIntelligence = intelligence;
 		computerPlayerLieFrequency = lieFrequency;
 		hand = new CardCollection();
@@ -29,12 +31,11 @@ public class ComputerPlayer extends Player {
 	 * Overwrites the Player's Function to Show Hand. Since this is the computer, we show nothing.
 	 * @return string showing nothing.
 	 */
-	 /*
+
 	public void showHand()
 	{
 		System.out.println("");
 	}
-	*/
 
 	public void addToHand(Card C)
 	{

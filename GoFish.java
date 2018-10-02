@@ -239,7 +239,7 @@ public class GoFish
 
             //Current Player Draws from Decks
             drawnCard = Deck.draw();
-            Players[Turn].addToHand(drawnCard, true);
+            Players[Turn].addToHand(drawnCard, Players[Turn].isHuman());
 
             //If Value of Drawn Card Matches Declared Value, Player Goes Again
             if(drawnCard.getValue() == requestedValue)

@@ -11,6 +11,8 @@ public class Player
 {
 	protected CardCollection hand;
 	protected int completedSets;
+	protected String name;
+	protected boolean isHuman;
 
 
 	// Constructors
@@ -18,9 +20,28 @@ public class Player
 	 *Primary Constructor
 	 *Creates a "Player" object. Initializes completedSets at 0
 	 */
-	public Player (){
+	 public Player (){
+	 	this.name = "";
+		isHuman = true;
+	 	hand = new CardCollection();
+	 	completedSets = 0;
+	 }
+
+	public Player (String name){
+		this.name = name;
+		isHuman = true;
 		hand = new CardCollection();
 		completedSets = 0;
+	}
+
+	public String getName()
+	{
+		return name;
+	}
+
+	public boolean isHuman()
+	{
+		return isHuman;
 	}
 
 	/**
@@ -58,10 +79,12 @@ public class Player
 
 		if(g > 0)
 		{
-			System.out.println("You got 4 " + g + "s!");
+			System.out.println(name + " Got 4 " + g + "s!");
+			completedSets = completedSets + 1;
+			System.out.println(name + " Now Has " + completedSets + " Books!");
 		}
 
-		completedSets = completedSets + 1;
+
 
 	}
 	/**
@@ -79,6 +102,7 @@ public class Player
 
 		while(continueToLoop){
 			//Need some function to call from the interface to ask the operator if they have 'cardValue'
+			hand.printCards();
 			System.out.println("Do you have any " + c.isFace(cardValue) + "s? (Y/N): ");
 			String Input = Reader.next();
 			System.out.println("");
