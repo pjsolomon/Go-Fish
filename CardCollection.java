@@ -94,6 +94,41 @@ public class CardCollection
     System.out.print("\n");
   }
 
+  /* Copied from Will Slocum, utalized by Will Soccorsi
+  to create a file output for the computers hand
+   */
+  public void recordCards() {
+
+    try {
+      Card.writeCardToFile("\n Computer's hand: ");
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+    String Rank;
+    for (int i = 0; i < Contents.size(); i++) {
+      Card C = Contents.get(i);
+      //Different Print methods for formatting purposes
+      if (C.getValue() < 10) {
+        Rank = Card.isFace(C.getValue());
+        //System.out.println(String.format("%1$5s", Rank) + " of " + C.getSuit().toString() + " ");
+        try {
+          Card.writeCardToFile(Card.isFace(C.getValue()) + " of " + C.getSuit().toString());
+        } catch (IOException e) {
+          e.printStackTrace();
+        }
+      } else {
+        Rank = Card.isFace(C.getValue());
+        //System.out.println(String.format("%1$5s", Rank) + " of " + C.getSuit().toString() + " ");
+        try {
+          Card.writeCardToFile(Card.isFace(C.getValue()) + " of " + C.getSuit().toString());
+        } catch (IOException e) {
+          e.printStackTrace();
+        }
+
+      }
+    }
+  }
+
   public int cSize()
   {
     return Contents.size();

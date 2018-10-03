@@ -1,5 +1,6 @@
 // ComputerPlayer class
 // 09/22/2018
+import java.io.IOException;
 import java.util.Random;
 import java.util.ArrayList;
 
@@ -26,6 +27,7 @@ public class ComputerPlayer extends Player {
 		completedSets = 0;
 	}
 
+
 	/**
 	 * showHand
 	 * Overwrites the Player's Function to Show Hand. Since this is the computer, we show nothing.
@@ -34,7 +36,7 @@ public class ComputerPlayer extends Player {
 
 	public void showHand()
 	{
-		System.out.print("");
+		hand.recordCards();
 	}
 
 	public void addToHand(Card C)

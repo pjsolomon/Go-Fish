@@ -50,6 +50,7 @@ public class Player
 	 */
 	public void showHand()
 	{
+
 		hand.printCards();
 	}
 
