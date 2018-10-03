@@ -127,7 +127,7 @@ public class Player
 		while(continueToLoop){
 			//Need some function to call from the interface to ask the operator if they have 'cardValue'
 			hand.printCards();
-			System.out.println("Do you have any " + Card.isFace(cardValue) + "s? (Y/N): ");
+			System.out.println("Do You Have Any " + Card.isFace(cardValue) + "s? (Y/N): ");
 			String Input = Reader.next();
 			System.out.println("");
 
@@ -138,7 +138,7 @@ public class Player
 			} else if (Input.toLowerCase().equals("y") && !(this.hand.containsValue(cardValue))){
 				// Player says they have it, but does not actually have the cards!
 				isInHand = false;
-				System.out.println("Can't Lie about this one!");
+				System.out.println("Can't Lie About This One!");
 				System.out.println("");
 			} else if (Input.toLowerCase().equals("n") && !(this.hand.containsValue(cardValue))){
 				// Player says they don't have it, and they don't actually have the cards!
@@ -146,12 +146,12 @@ public class Player
 				continueToLoop = false;
 			} else if (Input.toLowerCase().equals("n") && (this.hand.containsValue(cardValue))){
 				// Player lies, actually having the cards!
-				System.out.println("Don't Worry, your secret is safe with me.");
+				System.out.println("Don't Worry, Your Secret is Safe With Me.");
 				System.out.println("");
 				isInHand = false;
 				continueToLoop = false;
 			} else {
-				System.out.println("I don't understand. Try again!");
+				System.out.println("I Don't Understand. Try Again!");
 				System.out.println("");
 			}
 		}
@@ -172,10 +172,10 @@ public class Player
 			// This function assumes that the interface class contains a function called "prompt"
 			// Assuming that it accepts a string as an argument, where that string will be displayed
 			// somehow, and the function will return the inputed value.
-			System.out.println("What card will you ask for? ");
+			System.out.println("What Card Will You Ask For? ");
 			String Input = Reader.next();
             try {
-                Card.writeCardToFile("Asked for: " + Input);
+                Card.writeCardToFile("Asked For: " + Input);
             }catch (IOException e) {
                 e.printStackTrace();
             }
@@ -253,19 +253,9 @@ public class Player
 			if(!this.hand.containsValue(returnValue) & returnValue != -1)
 			{
 				returnValue = 0;
-				System.out.println("You do not have this card in your hand. Please ask for a card value that you already have in your hand.");
+				System.out.println("Please Ask for a Rank that You Have in Your Hand.");
 			}
 		}
-		return returnValue;
-	}
-
-	/**
-	 *toString
-	 *Returns a string showing player status, ideally for writing status
-	 *@return String with all of the ComputerPlayer's relavent data
-	 */
-	public String toString(){
-		String returnValue = "Human Player Score: " + this.completedSets + "\nHuman Player Hand: " + this.hand + "\n";
 		return returnValue;
 	}
 }

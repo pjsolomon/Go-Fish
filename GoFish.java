@@ -99,19 +99,20 @@ public class GoFish
     System.out.println("");
     System.out.println("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
 
-    System.out.println("");
-    System.out.println("");
+    System.out.println("\n-=-=-=-=-=-=-=-=-=-=-=-=-= Options =-=-=-=-=-=-=-=-=-=-=-=-=-\n");
 
-    System.out.println("The Computer has Two Memory Modes: Normal and Smart");
-    System.out.println("(1) Normal: The Computer Has No Memory of Your Guesses");
-    System.out.println("(2)  Smart: The Computer Has Perfect Memory of Your Guesses");
+    System.out.println("-------------------------");
+    System.out.println("Computer Intelligence");
+    System.out.println("-------------------------");
+    System.out.println("(1) Normal: Computer Has No Memory of Your Guesses");
+    System.out.println("(2)  Smart: Computer Has Perfect Memory of Your Guesses");
 
     //Create a Scanner to Read User's Input
     Scanner Reader = new Scanner(System.in);
     String Input;
     //Ensure that User's Input is Either 1 or 2
     int Intelligence;
-    System.out.println("Which Computer Would You Like to Face? (Enter 1 or 2)");
+    System.out.print("\nSelect Computer Intelligence: ");
     while(true)
     {
       try
@@ -122,19 +123,20 @@ public class GoFish
         {
           break;
         }
-        else { System.out.println("Please Select Either Option 1 or 2."); }
+        else { System.out.print("Enter Either '1' or '2': "); }
       }
       catch (Exception e)
       {
-        System.out.println("Please Enter an Integer.");
+        System.out.print("Enter an Integer: ");
       }
     }
     //Ensure that User's Input is an Integer Between 0 and 100
-    System.out.println("Also, Sometimes the Computer Will Lie to You. You Decide How Often it Lies");
+    System.out.println("");
+    System.out.println("-------------------------");
+    System.out.println("Computer Lie Frequency");
+    System.out.println("-------------------------");
+    System.out.print("Enter A Percentage (Or R For Random): ");
     int lieFreq;
-    System.out.println("Enter How Often You'd Like the Computer to Lie");
-    System.out.println("For Example, Entering 50 Would Cause the Computer to Lie Half the Time");
-    System.out.println("Enter 'R' if You Want a Random Percentage!");
     Random randNum = new Random();
     while(true)
     {
@@ -151,24 +153,28 @@ public class GoFish
         {
           break;
         }
-        else { System.out.println("Input Must Be Between 0 and 100 (Or 'R' For Random)."); }
+        else { System.out.print("Input Must Be Between 0 and 100: "); }
       }
       catch (Exception e)
       {
-        System.out.println("Please Enter an Integer (Or 'R' For Random).");
+        System.out.print("Enter an Integer (Or 'R' For Random): ");
       }
     }
 
     String name;
-    System.out.println("");
-    System.out.println("Enter Your Name:");
+    System.out.println("\n-------------------------");
+    System.out.println("Player Name");
+    System.out.println("-------------------------");
+    System.out.print("Enter Your Name: ");
     name = Reader.next();
     while(name.length() > 15)
     {
-      System.out.println("Sorry, Your Name Must Be 15 or Less Characters.");
-      System.out.println("Enter Your Name:");
+      System.out.print("Input Must Be 15 Characters or Less: ");
       name = Reader.next();
     }
+
+    System.out.println("");
+    System.out.println("-=-=-=-=-=-=-=-=-=-=-=-=-= Let's Play! =-=-=-=-=-=-=-=-=-=-=-=-=-");
     System.out.println("");
 
     //Initialize Each Player
@@ -314,12 +320,18 @@ public class GoFish
       }
       else
       {
-        System.out.println("Computer Wins With " + comSets + " Books!\n");
+        System.out.println("-=-=-=-=-=-=-=-=-=-= Game Over! =-=-=-=-=-=-=-=-=-=-");
+        System.out.println("\nComputer Wins With " + comSets + " Books!\n");
+        System.out.println("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-");
+        System.out.println("");
       }
     }
     else
     {
-      System.out.println("Thanks For Playing!\n");
+      System.out.println("-=-=-=-=-=-=-=-=-=-= Game Over! =-=-=-=-=-=-=-=-=-=-");
+      System.out.println("\nThanks For Playing!\n");
+      System.out.println("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-");
+      System.out.println("");
     }
   }
 }

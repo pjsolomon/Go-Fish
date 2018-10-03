@@ -109,17 +109,4 @@ public class ComputerPlayer extends Player {
 		// We should not hit this
 		return returnValue;
 	}
-
-	/**
-	 * toString
-	 * Returns a string showing ComputerPlayer status, ideally for writing status
-	 *
-	 * @return String with all of the ComputerPlayer's relavent data
-	 */
-	public String toString() {
-		String returnValue = "Computer Player Intelligence: " + this.computerPlayerIntelligence + "\nComputer Player Lie Frequency: " + this.computerPlayerLieFrequency + "\nComputer Player Score: " + this.completedSets + "\nComputer Player Hand: " + this.hand + "\n";
-		return returnValue;
-	}
-
-
 }
