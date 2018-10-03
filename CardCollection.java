@@ -56,16 +56,45 @@ public class CardCollection
     return false;
   }
 
+  public void recordCards(String name)
+  {
+
+    try { Card.writeCardToFile("\n" + name); }
+    catch (IOException e)
+    {
+      e.printStackTrace();
+    }
+
+    for(int i = 0; i < Contents.size(); i++)
+    {
+      Card C = Contents.get(i);
+
+      if(C.getValue() < 10)
+      {
+        try{Card.writeCardToFile(Card.isFace(C.getValue()) + " of " +  C.getSuit().toString());}
+        catch (IOException e)
+        {
+          e.printStackTrace();
+        }
+      }
+      else
+      {
+        try{Card.writeCardToFile(Card.isFace(C.getValue()) + " of " + C.getSuit().toString());}
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+      }
+
+    }
+  }
+
   //Print Each Card within a CardCollection
   public void printCards()
   {
     System.out.println("     Your Hand");
     System.out.println("-------------------");
-    try {
-        Card.writeCardToFile("\n Player's hand: ");
-    }catch (IOException e) {
-        e.printStackTrace();
-  }
+
     String Rank;
     for(int i = 0; i < Contents.size(); i++)
     {
@@ -74,59 +103,13 @@ public class CardCollection
       if(C.getValue() < 10) {
         Rank = Card.isFace(C.getValue());
         System.out.println(String.format("%1$5s", Rank) + " of " + C.getSuit().toString() + " ");
-          try {
-              Card.writeCardToFile(Card.isFace(C.getValue()) + " of " +  C.getSuit().toString());
-          } catch (IOException e) {
-              e.printStackTrace();
-          }
       } else {
         Rank = Card.isFace(C.getValue());
         System.out.println(String.format("%1$5s", Rank) + " of " + C.getSuit().toString() + " ");
-        try {
-              Card.writeCardToFile(Card.isFace(C.getValue()) + " of " + C.getSuit().toString());
-          } catch (IOException e) {
-              e.printStackTrace();
-          }
-
       }
     }
 
     System.out.print("\n");
-  }
-
-  /* Copied from Will Slocum, utalized by Will Soccorsi
-  to create a file output for the computers hand
-   */
-  public void recordCards() {
-
-    try {
-      Card.writeCardToFile("\n Computer's hand: ");
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
-    String Rank;
-    for (int i = 0; i < Contents.size(); i++) {
-      Card C = Contents.get(i);
-      //Different Print methods for formatting purposes
-      if (C.getValue() < 10) {
-        Rank = Card.isFace(C.getValue());
-        //System.out.println(String.format("%1$5s", Rank) + " of " + C.getSuit().toString() + " ");
-        try {
-          Card.writeCardToFile(Card.isFace(C.getValue()) + " of " + C.getSuit().toString());
-        } catch (IOException e) {
-          e.printStackTrace();
-        }
-      } else {
-        Rank = Card.isFace(C.getValue());
-        //System.out.println(String.format("%1$5s", Rank) + " of " + C.getSuit().toString() + " ");
-        try {
-          Card.writeCardToFile(Card.isFace(C.getValue()) + " of " + C.getSuit().toString());
-        } catch (IOException e) {
-          e.printStackTrace();
-        }
-
-      }
-    }
   }
 
   public int cSize()

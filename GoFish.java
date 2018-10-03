@@ -227,7 +227,6 @@ public class GoFish
 
        while(goAgain)
        {
-          System.out.println("-=-=-=-=-= " + Players[Turn].getName() + "'s Turn =-=-=-=-=-\n");
           if(Players[0].isEmpty() & Players[1].isEmpty() & Deck.cSize()==0)
           {
             break;
@@ -255,8 +254,11 @@ public class GoFish
             }
           }
 
+          System.out.println("-=-=-=-=-= " + Players[Turn].getName() + "'s Turn =-=-=-=-=-\n");
+
           //Display the Cards in the Current Player's Hand
           Players[0].sortHand();
+          Players[Turn].writeHandToFile();  
           Players[Turn].showHand();
 
           //Current Player must Declare Value

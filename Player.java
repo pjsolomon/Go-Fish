@@ -117,6 +117,11 @@ public class Player
 		}
 	}
 
+	public void writeHandToFile()
+	{
+		hand.recordCards(name);
+	}
+
 	/**
 	 * checkHand
 	 * Asks the player if he has a specific card. Allows player to lie.
