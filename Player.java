@@ -96,14 +96,14 @@ public class Player
 
 		if(g > 0)
 		{
-			System.out.println(name + " Got Four " + Card.isFace(g) + "s!");
+			System.out.print(name + " Got Four " + Card.isFace(g) + "s! ");
 			completedSets = completedSets + 1;
 			System.out.print(name + " Now Has " + completedSets + " Book");
 			if(completedSets > 1)
 			{
 				System.out.print("s");
 			}
-			System.out.println("!");
+			System.out.println("!\n");
 			return(true);
 		}
 		else{

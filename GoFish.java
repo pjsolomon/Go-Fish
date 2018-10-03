@@ -240,7 +240,7 @@ public class GoFish
             {
               populateHand(Players[Turn]);
               madeSet = Players[Turn].checkSets();
-              System.out.println("- " + Players[Turn].getName() + " Replenished Their Hand From the Deck -");
+              System.out.println("- " + Players[Turn].getName() + " Replenished Their Hand From the Deck -\n");
             }
           }
 
