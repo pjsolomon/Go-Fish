@@ -30,7 +30,7 @@ class Card {
    conversion from int to string for face cards
  */
 
-    public String isFace(int value){
+    public static String isFace(int value){
 
         String faceCard = Integer.toString(value);
 

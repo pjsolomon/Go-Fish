@@ -68,7 +68,14 @@ public class Player
 		hand.addCard(C);
 		if(Print)
 		{
-			System.out.print("You Drew a ");
+			if(C.getValue() == 1 | C.getValue() == 8)
+			{
+				System.out.print(name + " Drew An ");
+			}
+			else
+			{
+				System.out.print(name + " Drew A ");
+			}
 			C.printCard();
 		}
 	}
@@ -83,18 +90,27 @@ public class Player
 		return completedSets;
 	}
 
-	public void checkSets()
+	public Boolean checkSets()
 	{
 		int g = hand.removeSets();
 
 		if(g > 0)
 		{
-			System.out.println(name + " Got 4 " + g + "s!");
+			System.out.println(name + " Got Four " + Card.isFace(g) + "s!");
 			completedSets = completedSets + 1;
-			System.out.println(name + " Now Has " + completedSets + " Books!");
+			System.out.print(name + " Now Has " + completedSets + " Book");
+			if(completedSets > 1)
+			{
+				System.out.print("s");
+			}
+			System.out.println("!");
+			return(true);
+		}
+		else{
+			return(false);
 		}
 	}
-	
+
 	/**
 	 * checkHand
 	 * Asks the player if he has a specific card. Allows player to lie.
@@ -111,7 +127,7 @@ public class Player
 		while(continueToLoop){
 			//Need some function to call from the interface to ask the operator if they have 'cardValue'
 			hand.printCards();
-			System.out.println("Do you have any " + c.isFace(cardValue) + "s? (Y/N): ");
+			System.out.println("Do you have any " + Card.isFace(cardValue) + "s? (Y/N): ");
 			String Input = Reader.next();
 			System.out.println("");
 

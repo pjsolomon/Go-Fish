@@ -65,16 +65,16 @@ public class CardCollection
       //Different Print methods for formatting purposes
       if(C.getValue() < 10) {
 
-        System.out.println(C.isFace(C.getValue()) + "  of " + C.getSuit().toString() + " ");
+        System.out.println(Card.isFace(C.getValue()) + "  of " + C.getSuit().toString() + " ");
           try {
-              Card.writeCardToFile(C.isFace(C.getValue()) + " of " +  C.getSuit().toString());
+              Card.writeCardToFile(Card.isFace(C.getValue()) + " of " +  C.getSuit().toString());
           } catch (IOException e) {
               e.printStackTrace();
           }
       } else {
-        System.out.println(C.isFace(C.getValue()) + " of " + C.getSuit().toString() + " ");
+        System.out.println(Card.isFace(C.getValue()) + " of " + C.getSuit().toString() + " ");
         try {
-              Card.writeCardToFile(C.isFace(C.getValue()) + " of " + C.getSuit().toString());
+              Card.writeCardToFile(Card.isFace(C.getValue()) + " of " + C.getSuit().toString());
           } catch (IOException e) {
               e.printStackTrace();
           }

@@ -195,6 +195,7 @@ public class GoFish
     int requestedValue;
     Card drawnCard;
     Boolean goAgain;
+    Boolean madeSet;
 
     /*
      * Anatomy of a Turn in Go Fish:
@@ -228,16 +229,24 @@ public class GoFish
 
           if(Players[Turn].isEmpty())
           {
-            populateHand(Players[Turn]);
-            Players[Turn].checkSets();
-            System.out.println("- " + Players[Turn].getName() + " Replenished Their Hand From the Deck -");
+            madeSet = true;
+            while(madeSet)
+            {
+              populateHand(Players[Turn]);
+              madeSet = Players[Turn].checkSets();
+              System.out.println("- " + Players[Turn].getName() + " Replenished Their Hand From the Deck -");
+            }
           }
 
           if(Players[otherPlayer()].isEmpty())
           {
-            populateHand(Players[otherPlayer()]);
-            Players[otherPlayer()].checkSets();
-            System.out.println("- " + Players[otherPlayer()].getName() + " Replenished Their Hand From the Deck -");
+            madeSet = true;
+            while(madeSet)
+            {
+              populateHand(Players[otherPlayer()]);
+              madeSet = Players[otherPlayer()].checkSets();
+              System.out.println("- " + Players[otherPlayer()].getName() + " Replenished Their Hand From the Deck -");
+            }
           }
 
           //Display the Cards in the Current Player's Hand
@@ -262,7 +271,7 @@ public class GoFish
 
             Players[Turn].checkSets();
 
-            System.out.println("Good guess! Go again!\n");
+            System.out.println("Good Guess! Go Again!\n");
             //Current Player Gets Another Turn
             goAgain = true;
           }
@@ -301,11 +310,11 @@ public class GoFish
       int comSets = Players[1].getSets();
       if(humSets > comSets)
       {
-        System.out.println(Players[0].getName() + " Wins With " + humSets + " Sets!");
+        System.out.println(Players[0].getName() + " Wins With " + humSets + " Sets!\n");
       }
       else
       {
-        System.out.println("Computer Wins With " + comSets + " Books!");
+        System.out.println("Computer Wins With " + comSets + " Books!\n");
       }
     }
     else
