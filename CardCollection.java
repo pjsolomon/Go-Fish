@@ -59,26 +59,29 @@ public class CardCollection
   //Print Each Card within a CardCollection
   public void printCards()
   {
-    System.out.println("Your Hand:");
+    System.out.println("     Your Hand");
+    System.out.println("-------------------");
     try {
         Card.writeCardToFile("\n Player's hand: ");
     }catch (IOException e) {
         e.printStackTrace();
   }
+    String Rank;
     for(int i = 0; i < Contents.size(); i++)
     {
       Card C = Contents.get(i);
       //Different Print methods for formatting purposes
       if(C.getValue() < 10) {
-
-        System.out.println(Card.isFace(C.getValue()) + "  of " + C.getSuit().toString() + " ");
+        Rank = Card.isFace(C.getValue());
+        System.out.println(String.format("%1$5s", Rank) + " of " + C.getSuit().toString() + " ");
           try {
               Card.writeCardToFile(Card.isFace(C.getValue()) + " of " +  C.getSuit().toString());
           } catch (IOException e) {
               e.printStackTrace();
           }
       } else {
-        System.out.println(Card.isFace(C.getValue()) + " of " + C.getSuit().toString() + " ");
+        Rank = Card.isFace(C.getValue());
+        System.out.println(String.format("%1$5s", Rank) + " of " + C.getSuit().toString() + " ");
         try {
               Card.writeCardToFile(Card.isFace(C.getValue()) + " of " + C.getSuit().toString());
           } catch (IOException e) {
