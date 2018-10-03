@@ -235,7 +235,7 @@ public class GoFish
 
           if(Players[otherPlayer()].isEmpty())
           {
-            populateHand(Players[Turn]);
+            populateHand(Players[otherPlayer()]);
             Players[otherPlayer()].checkSets();
             System.out.println("- " + Players[otherPlayer()].getName() + " Replenished Their Hand From the Deck -");
           }

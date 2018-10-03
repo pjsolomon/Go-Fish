@@ -53,7 +53,10 @@ public class ComputerPlayer extends Player {
 	 */
 	public Boolean checkHand(int cardValue) {
 		Boolean isInHand = false;
-		askedCardsMemory.add(cardValue);
+		if(!askedCardsMemory.contains(new Integer(cardValue)))
+		{
+			askedCardsMemory.add(cardValue);
+		}
 		if (hand.containsValue(cardValue)) {
 			Random randomNumber = new Random();
 			// If the random number is higher than the "Lie Frequency", Computer
@@ -91,6 +94,7 @@ public class ComputerPlayer extends Player {
 				// First, Ask for cards other player asked for previously
 				for(int i : askedCardsMemory){
 					if(this.hand.containsValue(i)){
+						askedCardsMemory.remove(new Integer(i));
 						return i;
 					}
 				}
