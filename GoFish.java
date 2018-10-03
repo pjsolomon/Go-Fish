@@ -256,6 +256,7 @@ public class GoFish
           }
 
           //Display the Cards in the Current Player's Hand
+          Players[0].sortHand();
           Players[Turn].showHand();
 
           //Current Player must Declare Value

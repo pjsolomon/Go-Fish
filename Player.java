@@ -53,6 +53,11 @@ public class Player
 		hand.printCards();
 	}
 
+	public void sortHand()
+	{
+		hand.sortCards();
+	}
+
 	public boolean isEmpty()
 	{
 		if(hand.cSize() == 0){

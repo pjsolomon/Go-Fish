@@ -2,6 +2,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Collections;
+import java.util.Comparator;
 
 public class CardCollection
 {
@@ -17,6 +18,11 @@ public class CardCollection
   public void addCard(Card C)
   {
     Contents.add(C);
+  }
+
+  public void sortCards()
+  {
+    Collections.sort(Contents, Comparator.comparing(Card::getValue));
   }
 
   //Removes All of a Specified Value from the CardCollection
