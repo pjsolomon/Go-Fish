@@ -295,7 +295,7 @@ public class GoFish
               //If Value of Drawn Card Matches Declared Value, Player Goes Again
               if(drawnCard.getValue() == requestedValue)
               {
-                System.out.print("It's a match! ");
+                System.out.print("It's a Match! ");
                 Players[Turn].checkSets();
                 goAgain = true;
                 System.out.println("Go Again!\n");
