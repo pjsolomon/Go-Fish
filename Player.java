@@ -1,6 +1,4 @@
-// Player class
-// 09/22/2018
-
+//Import Statements
 import java.io.IOException;
 import java.util.Scanner;
 import java.util.ArrayList;
@@ -9,70 +7,82 @@ import java.util.ArrayList;
 
 public class Player
 {
+	//Player's Collection of Cards
 	protected CardCollection hand;
+	//Player's Number of Books
 	protected int completedSets;
+	//Player's Name
 	protected String name;
+	//Whether or Not Player is Human
 	protected boolean isHuman;
 
 
 	// Constructors
 	/**
 	 *Primary Constructor
-	 *Creates a "Player" object. Initializes completedSets at 0
+	 *Creates a "Player" Object. Initializes completedSets To 0
 	 */
-	 public Player (){
+	 public Player ()
+	 {
 	 	this.name = "";
 		isHuman = true;
 	 	hand = new CardCollection();
 	 	completedSets = 0;
 	 }
 
-	public Player (String name){
+	//Constructor with Name Input from User
+	public Player (String name)
+	{
 		this.name = name;
 		isHuman = true;
 		hand = new CardCollection();
 		completedSets = 0;
 	}
 
+	//Returns Player's Name
 	public String getName()
 	{
 		return name;
 	}
 
+	//Returns Whether Player is Human
 	public boolean isHuman()
 	{
 		return isHuman;
 	}
 
-	/**
-	 *showHand
-	 *Shows the hand of the Player
-	 */
+	//Invokes Method to Print Cards in Hand
 	public void showHand()
 	{
 		hand.printCards();
 	}
 
+	//Invokes Method to Sort Cards in Hand
 	public void sortHand()
 	{
 		hand.sortCards();
 	}
 
+	//Returns True if Hand has 0 Elements
 	public boolean isEmpty()
 	{
-		if(hand.cSize() == 0){
+		if(hand.cSize() == 0)
+		{
 			return true;
 		}
-		else{
+		else
+		{
 			return false;
 		}
 	}
 
+	//Adds a Specified Card ot Hand, May or May Not Print to Console
 	public void addToHand(Card C, boolean Print)
 	{
 		hand.addCard(C);
 		if(Print)
 		{
+			//Prints Correct Grammar Depending on Card
 			if(C.getValue() == 1 | C.getValue() == 8)
 			{
 				System.out.print(name + " Drew An ");
@@ -85,37 +95,48 @@ public class Player
 		}
 	}
 
+	//Invokes Method to Remove All Cards of Rank V from Hand
 	public ArrayList<Card> popFromHand(int V)
 	{
 		return hand.removeValues(V);
 	}
 
+	//Returns Player's Number of Bookss
 	public int getSets()
 	{
 		return completedSets;
 	}
 
+	//If Player Has 4 Cards of Same Rank in Their Hand, Remove Them
 	public Boolean checkSets()
 	{
+		//Invokes Method to Remove Sets from Hand
 		int g = hand.removeSets();
 
+		//If g != 0, g is the Rank of the Set
 		if(g > 0)
 		{
+			//Print Results to Console
 			System.out.print(name + " Got Four " + Card.isFace(g) + "s! ");
 			completedSets = completedSets + 1;
 			System.out.print(name + " Now Has " + completedSets + " Book");
+			//Ensure Correct Grammar
 			if(completedSets > 1)
 			{
 				System.out.print("s");
 			}
 			System.out.println("!\n");
+
 			return(true);
 		}
-		else{
+		//If g == 0, Then No Sets in Hand
+		else
+		{
 			return(false);
 		}
 	}
 
+	//Invokes Method to Write Cards of Hand to File
 	public void writeHandToFile()
 	{
 		hand.recordCards(name);
@@ -127,15 +148,16 @@ public class Player
 	 * @param cardValue Value of card to check ComputerPlayer's hand
 	 * @return Boleen True if card is in ComputerPlayer's hand, false otherwise
 	 */
-	public Boolean checkHand (int cardValue){
-		Card c = new Card(Suit.SPADES, 10); //Dummy object
+	public Boolean checkHand (int cardValue)
+	{
 		Boolean isInHand = false;
 		Boolean continueToLoop = true;
 
 		Scanner Reader = new Scanner(System.in);
 
-		while(continueToLoop){
-			//Need some function to call from the interface to ask the operator if they have 'cardValue'
+		while(continueToLoop)
+		{
+
 			hand.printCards();
 			System.out.println("Do You Have Any " + Card.isFace(cardValue) + "s? (Y/N): ");
 			String Input = Reader.next();
@@ -165,7 +187,7 @@ public class Player
 				System.out.println("");
 			}
 		}
-		// Made it out! It's time to return.
+		// Made It Out! Return Results
 		return isInHand;
 	}
 
@@ -175,7 +197,8 @@ public class Player
 	 * Contains Logic to prevent player for asking for a value they do not have.
 	 * @return Value of card they want. (Right Now using 1-13. Will interpret face card letters to numbers)
 	 */
-	public int requestCard (){
+	public int requestCard ()
+	{
 		int returnValue = 0;
 		Scanner Reader = new Scanner(System.in);
 		while(returnValue == 0){

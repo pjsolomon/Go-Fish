@@ -1,3 +1,4 @@
+//Import Statements
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -6,7 +7,7 @@ import java.util.Comparator;
 
 public class CardCollection
 {
-
+  //CardCollection Is Simply an ArrayList of Cards
   ArrayList<Card> Contents;
 
   //Constructor, Initalizes CardCollection with Empty Contents
@@ -19,7 +20,7 @@ public class CardCollection
   {
     Contents.add(C);
   }
-
+  //Sort the Cards Using Collections.Sort and Comparator
   public void sortCards()
   {
     Collections.sort(Contents, Comparator.comparing(Card::getValue));
@@ -28,7 +29,9 @@ public class CardCollection
   //Removes All of a Specified Value from the CardCollection
   public ArrayList removeValues(int V)
   {
+    //Initialize ArrayList to Return to Removed Cards
     ArrayList<Card> removedCards = new ArrayList<Card>();
+    //Use an Interator to Easily Remove Cards from Contents
     Iterator itr = Contents.iterator();
     while(itr.hasNext())
     {
@@ -43,7 +46,7 @@ public class CardCollection
     return removedCards;
   }
 
-  //Check if a CardCollection Contains a Value
+  //Check if a CardCollection Contains a Particular Value
   public Boolean containsValue(int V)
   {
     for(int i = 0; i < Contents.size(); i++)
@@ -56,6 +59,7 @@ public class CardCollection
     return false;
   }
 
+  //Iterate Through All Cards and Write Them to Output File
   public void recordCards(String name)
   {
 
@@ -89,29 +93,33 @@ public class CardCollection
     }
   }
 
-  //Print Each Card within a CardCollection
+  //Print Each Card Within a CardCollection
   public void printCards()
   {
     System.out.println("     Your Hand");
     System.out.println("-------------------");
 
     String Rank;
+    //Iterate Through Contents
     for(int i = 0; i < Contents.size(); i++)
     {
       Card C = Contents.get(i);
       //Different Print methods for formatting purposes
-      if(C.getValue() < 10) {
+      if(C.getValue() < 10)
+      {
         Rank = Card.isFace(C.getValue());
         System.out.println(String.format("%1$5s", Rank) + " of " + C.getSuit().toString() + " ");
-      } else {
+      }
+      else
+      {
         Rank = Card.isFace(C.getValue());
         System.out.println(String.format("%1$5s", Rank) + " of " + C.getSuit().toString() + " ");
       }
     }
-
     System.out.print("\n");
   }
 
+  //Return Size of Contents
   public int cSize()
   {
     return Contents.size();
@@ -130,22 +138,22 @@ public class CardCollection
   public int removeSets()
   {
     int setValue = 0;
+    //Inialize Array to Track Number of Each Rank
     int[] V = new int[14];
-
+    //Each Rank Initially Has 0 Occurences
     for(int i = 0; i < V.length; i++)
     {
       V[i] = 0;
     }
-
+    //For Every Card, Increment the Array at the Index Corresponding to its Value
     for(int j = 0; j < Contents.size(); j++)
     {
       int val = Contents.get(j).getValue();
       V[val] = V[val] + 1;
     }
 
+    //Use an Iterator to Remove Values if There are 4 of Them
     Iterator itr = Contents.iterator();
-
-
     while(itr.hasNext())
     {
       Card C = (Card) itr.next();
@@ -155,7 +163,6 @@ public class CardCollection
         setValue = C.getValue();
       }
     }
-
     return setValue;
   }
 
@@ -165,14 +172,14 @@ public class CardCollection
     //Plebian Cards
     for (int i = 2; i < 11; i++)
     {
-      Card spades = new Card(Suit.SPADES, i);
-      Contents.add(spades);
-      Card hearts = new Card(Suit.HEARTS, i);
-      Contents.add(hearts);
-      Card diamonds = new Card(Suit.DIAMONDS, i);
-      Contents.add(diamonds);
-      Card clubs = new Card(Suit.CLUBS, i);
-      Contents.add(clubs);
+      Card SPADES = new Card(Suit.SPADES, i);
+      Contents.add(SPADES);
+      Card HEARTS = new Card(Suit.HEARTS, i);
+      Contents.add(HEARTS);
+      Card DIAMONDS = new Card(Suit.DIAMONDS, i);
+      Contents.add(DIAMONDS);
+      Card CLUBS = new Card(Suit.CLUBS, i);
+      Contents.add(CLUBS);
     }
     //Face Cards
     //Jack = 11

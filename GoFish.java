@@ -1,3 +1,4 @@
+//Import Statements
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.Random;
@@ -55,6 +56,7 @@ public class GoFish
   {
     Card C;
     int limit = 0;
+    //Add Up to 7 Cards to a Hand as Long as Deck Still Has Cards
     while(Deck.cSize() > 0 & limit < 7)
     {
       C = Deck.draw();
@@ -69,16 +71,8 @@ public class GoFish
 
     //Clear the User's Screen
     System.out.print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-    /*
-    Bob must hand over all cards of that rank if possible.
-    If he has none, Bob tells Alice to "go fish" (or just simply "fish"),
-    and Alice draws a card from the pool and places it in her own hand.
-    Then it is the next player's turn – unless the card Alice drew is the card she asked for,
-    in which case she shows it to the other players, and she gets another turn.
-    When any player at any time has all four cards of one face value, it forms a book,
-    and the cards must be placed face up in front of that player.
-    */
 
+    //Print the Instructions of the Game
     System.out.println("-=-=-=-=-=-=-=-=-=-= Welcome To Go Fish! =-=-=-=-=-=-=-=-=-=-");
     System.out.println("\nHere's How To Play...\n");
     System.out.println("- The Game Consists of 2 Players: You and the Computer");
@@ -100,7 +94,12 @@ public class GoFish
     System.out.println("");
     System.out.println("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
 
+    //Print Some Options for the User to Select
     System.out.println("\n-=-=-=-=-=-=-=-=-=-=-=-=-= Options =-=-=-=-=-=-=-=-=-=-=-=-=-\n");
+
+    //Create a Scanner to Read User's Input
+    Scanner Reader = new Scanner(System.in);
+    String Input;
 
     System.out.println("-------------------------");
     System.out.println("Computer Intelligence");
@@ -108,14 +107,13 @@ public class GoFish
     System.out.println("(1) Normal: Computer Has No Memory of Your Guesses");
     System.out.println("(2)  Smart: Computer Has Perfect Memory of Your Guesses");
 
-    //Create a Scanner to Read User's Input
-    Scanner Reader = new Scanner(System.in);
-    String Input;
+
     //Ensure that User's Input is Either 1 or 2
     int Intelligence;
     System.out.print("\nSelect Computer Intelligence: ");
     while(true)
     {
+      //If User Enters a String, Catch it and Ask Again
       try
       {
         Input = Reader.next();
@@ -131,7 +129,7 @@ public class GoFish
         System.out.print("Enter an Integer: ");
       }
     }
-    //Ensure that User's Input is an Integer Between 0 and 100
+
     System.out.println("");
     System.out.println("-------------------------");
     System.out.println("Computer Lie Frequency");
@@ -139,16 +137,19 @@ public class GoFish
     System.out.print("Enter A Percentage (Or R For Random): ");
     int lieFreq;
     Random randNum = new Random();
+    //Continue Loop Until Acceptable Input Breaks Out
     while(true)
     {
       try
       {
         Input = Reader.next();
+        //Only String Allowed is R or r
         if(Input.equals("R") | Input.equals("r"))
         {
           lieFreq = randNum.nextInt(100);
           break;
         }
+        //Ensure that User's Input is an Integer Between 0 and 100
         lieFreq = Integer.parseInt(Input);
         if(lieFreq >= 0 & lieFreq <= 100)
         {
@@ -162,12 +163,13 @@ public class GoFish
       }
     }
 
-    String name;
     System.out.println("\n-------------------------");
     System.out.println("Player Name");
     System.out.println("-------------------------");
     System.out.print("Enter Your Name: ");
+    String name;
     name = Reader.next();
+    //While Name is Longer Than 15 Characters, Ask Again
     while(name.length() > 15)
     {
       System.out.print("Input Must Be 15 Characters or Less: ");
@@ -191,7 +193,7 @@ public class GoFish
     Deck = new CardCollection();
     Deck.populateDeck();
 
-    //Populate Each Player's Hands
+    //Populate Each Player's Hands (Check for Sets Right Away!)
     populateHand(Players[0]);
     Players[0].checkSets();
     populateHand(Players[1]);
@@ -224,18 +226,22 @@ public class GoFish
      Game:
      while(!isGameOver())
      {
+       //goAgain = true Allows Code to Reach Inner While Loop
        goAgain = true;
 
        while(goAgain)
        {
+          //If No Cards Are in Hand or Deck, Break Out of Loop, Game Should End
           if(Players[0].isEmpty() & Players[1].isEmpty() & Deck.cSize()==0)
           {
             break;
           }
 
+          //Repopulate Current Player's Hand If It Is Empty
           if(Players[Turn].isEmpty())
           {
             madeSet = true;
+            //Make Sure New Hand Doesn't Contain A Set
             while(madeSet)
             {
               populateHand(Players[Turn]);
@@ -243,10 +249,11 @@ public class GoFish
               System.out.println("- " + Players[Turn].getName() + " Replenished Their Hand From the Deck -\n");
             }
           }
-
+          //Repopulate Non-Current Player's Hand If It Is Empty As Well
           if(Players[otherPlayer()].isEmpty())
           {
             madeSet = true;
+            //Make Sure New Hand Doesn't Contain A Set
             while(madeSet)
             {
               populateHand(Players[otherPlayer()]);
@@ -257,13 +264,14 @@ public class GoFish
 
           System.out.println("-=-=-=-=-= " + Players[Turn].getName() + "'s Turn =-=-=-=-=-\n");
 
-          //Display the Cards in the Current Player's Hand
+          //Sort, Write, and Display the Cards in the Current Player's Hand
           Players[0].sortHand();
           Players[Turn].writeHandToFile();
           Players[Turn].showHand();
 
           //Current Player must Declare Value
           requestedValue = Players[Turn].requestCard();
+          //If Player Types 'quit', requestedValue will be -1, Should End Game
           if(requestedValue == -1)
           {
             break Game;
@@ -278,7 +286,7 @@ public class GoFish
             {
               Players[Turn].addToHand(removedCards.get(i), false);
             }
-
+            //Check For Sets in PLayer's Hand with New Cards
             Players[Turn].checkSets();
 
             System.out.println("Good Guess! Go Again!\n");
@@ -288,11 +296,13 @@ public class GoFish
           //Declared Card is Not in Non-Current Player's Hand
           else
           {
+            //If Deck Isn't Empty, Player Must Draw a Card
             if(Deck.cSize() > 0)
             {
-              //Current Player Draws from Decks
+              //Current Player Draws from Deck
               System.out.println("Go Fish!\n");
               drawnCard = Deck.draw();
+              //Write Draw to File
               try
               {
                 Card.writeCardToFile("Go Fish! Drew A " + Card.isFace(drawnCard.getValue()));
@@ -301,6 +311,7 @@ public class GoFish
               {
                   e.printStackTrace();
               }
+              //Add Drawn Card to Hand
               Players[Turn].addToHand(drawnCard, Players[Turn].isHuman());
 
               //If Value of Drawn Card Matches Declared Value, Player Goes Again
@@ -320,10 +331,13 @@ public class GoFish
             }
           }
       }
+      //At then End of Someones Turn, Make Sure the Other Player Goes Next
       switchTurn();
     }
+    //If isGameOver = true, There Must be a Winner
     if(isGameOver())
     {
+      //Find Each Player's Number of Books, Decide Winner
       int humSets = Players[0].getSets();
       int comSets = Players[1].getSets();
       if(humSets > comSets)
@@ -341,6 +355,7 @@ public class GoFish
         System.out.println("");
       }
     }
+    //If isGameOver = false, Then Player Must've Asked to Quit, There Is No Winner
     else
     {
       System.out.println("-=-=-=-=-=-=-=-=-=-= Game Over! =-=-=-=-=-=-=-=-=-=-");

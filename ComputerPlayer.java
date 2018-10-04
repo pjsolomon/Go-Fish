@@ -1,12 +1,15 @@
-// ComputerPlayer class
-// 09/22/2018
+// Import Statements
 import java.io.IOException;
 import java.util.Random;
 import java.util.ArrayList;
 
-public class ComputerPlayer extends Player {
+public class ComputerPlayer extends Player
+{
+	//Computer Players are Normal or Smart (1 or 2)
 	private int computerPlayerIntelligence;
+	//Computer Players Have Lie Frequency Between 0 and 100
 	private int computerPlayerLieFrequency;
+	//Computer Players May Remember what Human Asks
 	private ArrayList<Integer> askedCardsMemory;
 	// Constructors
 
@@ -17,7 +20,8 @@ public class ComputerPlayer extends Player {
 	 * @param intelligence How smart the ComputerPlayer will be.
 	 * @param lieFrequency What percentage of the computer's responses will be lies.
 	 */
-	public ComputerPlayer(int intelligence, int lieFrequency) {
+	public ComputerPlayer(int intelligence, int lieFrequency)
+	{
 		super.name = "Computer";
 		isHuman = false;
 		computerPlayerIntelligence = intelligence;
@@ -34,11 +38,12 @@ public class ComputerPlayer extends Player {
 	 * @return string showing nothing.
 	 */
 
+	//OVERRIDE: Computer Players Don't Show Their Hand
 	public void showHand()
 	{
 		System.out.println("");
 	}
-
+	//OVERRIDE: Simply Adds a Card to Hand, No Printing Neccessary
 	public void addToHand(Card C)
 	{
 		hand.addCard(C);
@@ -53,23 +58,30 @@ public class ComputerPlayer extends Player {
 	 * @param cardValue Value of card to check ComputerPlayer's hand
 	 * @return Boleen True if card is in ComputerPlayer's hand, false otherwise
 	 */
-	public Boolean checkHand(int cardValue) {
+	public Boolean checkHand(int cardValue)
+	{
 		Boolean isInHand = false;
 		if(!askedCardsMemory.contains(new Integer(cardValue)))
 		{
 			askedCardsMemory.add(cardValue);
 		}
-		if (hand.containsValue(cardValue)) {
+		if (hand.containsValue(cardValue))
+		{
 			Random randomNumber = new Random();
 			// If the random number is higher than the "Lie Frequency", Computer
 			// will tell truth and admit it has the card. Otherwise it will lie.
-			if (randomNumber.nextInt(100) > computerPlayerLieFrequency) {
+			if (randomNumber.nextInt(100) > computerPlayerLieFrequency)
+			{
 				isInHand = true;
 				return isInHand;
-			} else {
+			}
+			else
+			{
 				return isInHand;
 			}
-		} else {
+		}
+		else
+		{
 			return isInHand;
 		}
 	}
@@ -80,12 +92,15 @@ public class ComputerPlayer extends Player {
 	 * Get's the card value that the computer wants.
 	 * @return Value of card the computer wants.
 	 */
-	public int requestCard (){
+	public int requestCard ()
+	{
 		int returnValue = 0;
 		Random randomNumber = new Random();
-		switch (computerPlayerIntelligence){
+		switch (computerPlayerIntelligence)
+		{
 			case 1:
-				while(true){
+				while(true)
+				{
 					returnValue = randomNumber.nextInt(13);
 					if(this.hand.containsValue(returnValue))
 					{
@@ -100,8 +115,10 @@ public class ComputerPlayer extends Player {
 
 			case 2:
 				// First, Ask for cards other player asked for previously
-				for(int i : askedCardsMemory){
-					if(this.hand.containsValue(i)){
+				for(int i : askedCardsMemory)
+				{
+					if(this.hand.containsValue(i))
+					{
 						askedCardsMemory.remove(new Integer(i));
 						try { Card.writeCardToFile("Asked For: " + i); }
 						catch (IOException e)
@@ -112,9 +129,11 @@ public class ComputerPlayer extends Player {
 					}
 				}
 				// Otherwise, just ask for a random card we have.
-				while(true){
+				while(true)
+				{
 					returnValue = randomNumber.nextInt(13);
-					if(this.hand.containsValue(returnValue)){
+					if(this.hand.containsValue(returnValue))
+					{
 						try { Card.writeCardToFile("Asked For: " + returnValue); }
 						catch (IOException e)
 						{
