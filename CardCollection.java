@@ -8,25 +8,30 @@ import java.util.Comparator;
 public class CardCollection
 {
   //CardCollection Is Simply an ArrayList of Cards
+  //WILLIAM SLOCUM
   ArrayList<Card> Contents;
 
   //Constructor, Initalizes CardCollection with Empty Contents
+  //WILLIAM SLOCUM
   public CardCollection()
   {
     Contents = new ArrayList<Card>();
   }
   //Adds A Card to the CardCollection
+  //WILLIAM SLOCUM
   public void addCard(Card C)
   {
     Contents.add(C);
   }
   //Sort the Cards Using Collections.Sort and Comparator
+  //WILLIAM SLOCUM
   public void sortCards()
   {
     Collections.sort(Contents, Comparator.comparing(Card::getValue));
   }
 
   //Removes All of a Specified Value from the CardCollection
+  //WILLIAM SLOCUM
   public ArrayList removeValues(int V)
   {
     //Initialize ArrayList to Return to Removed Cards
@@ -47,6 +52,7 @@ public class CardCollection
   }
 
   //Check if a CardCollection Contains a Particular Value
+  //WILLIAM SLOCUM
   public Boolean containsValue(int V)
   {
     for(int i = 0; i < Contents.size(); i++)
@@ -60,6 +66,7 @@ public class CardCollection
   }
 
   //Iterate Through All Cards and Write Them to Output File
+  //WILL SOCCORSI
   public void recordCards(String name)
   {
 
@@ -94,6 +101,7 @@ public class CardCollection
   }
 
   //Print Each Card Within a CardCollection
+  //PJ SOLOMON
   public void printCards()
   {
     System.out.println("     Your Hand");
@@ -120,12 +128,14 @@ public class CardCollection
   }
 
   //Return Size of Contents
+  //WILLIAM SLOCUM
   public int cSize()
   {
     return Contents.size();
   }
 
   //Pops a Card from CardCollection
+  //WILLIAM SLOCUM
   public Card draw()
   {
     Card C = Contents.get(0);
@@ -135,6 +145,7 @@ public class CardCollection
 
 
   //Check for Sets of 4 within the CardCollection
+  //WILLIAM SLOCUM
   public int removeSets()
   {
     int setValue = 0;
@@ -167,6 +178,7 @@ public class CardCollection
   }
 
   //Create and Add all 52 Standard Cards to the CardCollection
+  //WILL SOCCORSI
   public void populateDeck()
   {
     //Plebian Cards

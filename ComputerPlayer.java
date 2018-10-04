@@ -5,13 +5,13 @@ import java.util.ArrayList;
 
 public class ComputerPlayer extends Player
 {
+	//JOSHUA SACHAR
 	//Computer Players are Normal or Smart (1 or 2)
 	private int computerPlayerIntelligence;
 	//Computer Players Have Lie Frequency Between 0 and 100
 	private int computerPlayerLieFrequency;
 	//Computer Players May Remember what Human Asks
 	private ArrayList<Integer> askedCardsMemory;
-	// Constructors
 
 	/**
 	 * Primary Constructor
@@ -20,6 +20,7 @@ public class ComputerPlayer extends Player
 	 * @param intelligence How smart the ComputerPlayer will be.
 	 * @param lieFrequency What percentage of the computer's responses will be lies.
 	 */
+	 //JOSHUA SACHAR
 	public ComputerPlayer(int intelligence, int lieFrequency)
 	{
 		super.name = "Computer";
@@ -39,11 +40,13 @@ public class ComputerPlayer extends Player
 	 */
 
 	//OVERRIDE: Computer Players Don't Show Their Hand
+	//JOSHUA SACHAR
 	public void showHand()
 	{
 		System.out.println("");
 	}
 	//OVERRIDE: Simply Adds a Card to Hand, No Printing Neccessary
+	//WILLIAM SLOCUM
 	public void addToHand(Card C)
 	{
 		hand.addCard(C);
@@ -58,6 +61,7 @@ public class ComputerPlayer extends Player
 	 * @param cardValue Value of card to check ComputerPlayer's hand
 	 * @return Boleen True if card is in ComputerPlayer's hand, false otherwise
 	 */
+	 //JOSHUA SACHAR
 	public Boolean checkHand(int cardValue)
 	{
 		Boolean isInHand = false;
@@ -92,6 +96,7 @@ public class ComputerPlayer extends Player
 	 * Get's the card value that the computer wants.
 	 * @return Value of card the computer wants.
 	 */
+	 //JOSHUA SACHAR
 	public int requestCard ()
 	{
 		int returnValue = 0;

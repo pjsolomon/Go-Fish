@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 public class Player
 {
+	//JOSHUA SACHAR
 	//Player's Collection of Cards
 	protected CardCollection hand;
 	//Player's Number of Books
@@ -22,6 +23,7 @@ public class Player
 	 *Primary Constructor
 	 *Creates a "Player" Object. Initializes completedSets To 0
 	 */
+	 //JOSHUA SACHAR
 	 public Player ()
 	 {
 	 	this.name = "";
@@ -31,6 +33,7 @@ public class Player
 	 }
 
 	//Constructor with Name Input from User
+	//WILLIAM SLOCUM
 	public Player (String name)
 	{
 		this.name = name;
@@ -40,30 +43,35 @@ public class Player
 	}
 
 	//Returns Player's Name
+	//WILLIAM SLOCUM
 	public String getName()
 	{
 		return name;
 	}
 
 	//Returns Whether Player is Human
+	//WILLIAM SLOCUM
 	public boolean isHuman()
 	{
 		return isHuman;
 	}
 
 	//Invokes Method to Print Cards in Hand
+	//JOSHUA SACHAR
 	public void showHand()
 	{
 		hand.printCards();
 	}
 
 	//Invokes Method to Sort Cards in Hand
+	//WILLIAM SLOCUM
 	public void sortHand()
 	{
 		hand.sortCards();
 	}
 
 	//Returns True if Hand has 0 Elements
+	//WILLIAM SLOCUM
 	public boolean isEmpty()
 	{
 		if(hand.cSize() == 0)
@@ -77,6 +85,7 @@ public class Player
 	}
 
 	//Adds a Specified Card ot Hand, May or May Not Print to Console
+	//WILLIAM SLOCUM
 	public void addToHand(Card C, boolean Print)
 	{
 		hand.addCard(C);
@@ -96,18 +105,21 @@ public class Player
 	}
 
 	//Invokes Method to Remove All Cards of Rank V from Hand
+	//WILLIAM SLOCUM
 	public ArrayList<Card> popFromHand(int V)
 	{
 		return hand.removeValues(V);
 	}
 
-	//Returns Player's Number of Bookss
+	//Returns Player's Number of Books
+	//WILLIAM SLOCUM
 	public int getSets()
 	{
 		return completedSets;
 	}
 
 	//If Player Has 4 Cards of Same Rank in Their Hand, Remove Them
+	//WILLIAM SLOCUM
 	public Boolean checkSets()
 	{
 		//Invokes Method to Remove Sets from Hand
@@ -137,6 +149,7 @@ public class Player
 	}
 
 	//Invokes Method to Write Cards of Hand to File
+	//WILL SOCCORSI
 	public void writeHandToFile()
 	{
 		hand.recordCards(name);
@@ -148,6 +161,7 @@ public class Player
 	 * @param cardValue Value of card to check ComputerPlayer's hand
 	 * @return Boleen True if card is in ComputerPlayer's hand, false otherwise
 	 */
+	 //JOSHUA SACHAR
 	public Boolean checkHand (int cardValue)
 	{
 		Boolean isInHand = false;
@@ -197,6 +211,7 @@ public class Player
 	 * Contains Logic to prevent player for asking for a value they do not have.
 	 * @return Value of card they want. (Right Now using 1-13. Will interpret face card letters to numbers)
 	 */
+	 //JOSHUA SACHAR
 	public int requestCard ()
 	{
 		int returnValue = 0;

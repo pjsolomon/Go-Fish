@@ -7,11 +7,13 @@ import java.io.IOException;
 public class GoFish
 {
   //FIELDS
+  //WILLIAM SLOCUM
   public static Player[] Players;
   public static CardCollection Deck;
   public static int Turn;
 
   //A Function that Switches the Current Player at the End of a Turn
+  //WILLIAM SLOCUM
   public static void switchTurn()
   {
     if(Turn == 1)
@@ -25,6 +27,7 @@ public class GoFish
   }
 
   //A Function that Returns the Index of the Non-Current Player
+  //WILLIAM SLOCUM
   public static int otherPlayer()
   {
     if(Turn == 1)
@@ -37,6 +40,7 @@ public class GoFish
     }
   }
 
+  //WILLIAM SLOCUM
   public static Boolean isGameOver()
   {
     //Go Fish is Over when All Cards are in Completed Sets of 4 (13 Total Sets)
@@ -52,6 +56,7 @@ public class GoFish
   }
 
   //Add 7 Cards from the Deck to Each Player's Hand
+  //WILLIAM SLOCUM
   public static void populateHand(Player P)
   {
     Card C;
@@ -66,6 +71,7 @@ public class GoFish
   }
 
   //Go Fish is Played Within the Main Function
+  //WILLIAM SLOCUM
   public static void main(String[] args)
   {
 
