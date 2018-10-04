@@ -3,14 +3,11 @@ import java.io.IOException;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 
-
 enum Suit {SPADES, CLUBS, DIAMONDS, HEARTS}
-
-
 
 class Card {
 
-
+    public static boolean Append = false;
 
     private int value;
     private Suit suit;
@@ -67,11 +64,7 @@ class Card {
     void printCard() {
       System.out.println(isFace(value) + " of " + suit);
       System.out.println("");
-        try {
-            writeCardToFile("GO FISH! Player drew a: " + isFace(value));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        
     }
 
 
@@ -80,10 +73,11 @@ class Card {
     */
     public static void writeCardToFile(String s)
             throws IOException {
-        BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt", true));
+        BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt", Append));
         writer.write(s);
         writer.newLine();
         writer.close();
+        Append = true;
     }
 
 }

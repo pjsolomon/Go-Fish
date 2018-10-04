@@ -1,6 +1,7 @@
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.Random;
+import java.io.IOException;
 
 public class GoFish
 {
@@ -258,7 +259,7 @@ public class GoFish
 
           //Display the Cards in the Current Player's Hand
           Players[0].sortHand();
-          Players[Turn].writeHandToFile();  
+          Players[Turn].writeHandToFile();
           Players[Turn].showHand();
 
           //Current Player must Declare Value
@@ -292,6 +293,14 @@ public class GoFish
               //Current Player Draws from Decks
               System.out.println("Go Fish!\n");
               drawnCard = Deck.draw();
+              try
+              {
+                Card.writeCardToFile("Go Fish! Drew A " + Card.isFace(drawnCard.getValue()));
+              }
+              catch (IOException e)
+              {
+                  e.printStackTrace();
+              }
               Players[Turn].addToHand(drawnCard, Players[Turn].isHuman());
 
               //If Value of Drawn Card Matches Declared Value, Player Goes Again
@@ -319,7 +328,10 @@ public class GoFish
       int comSets = Players[1].getSets();
       if(humSets > comSets)
       {
+        System.out.println("-=-=-=-=-=-=-=-=-=-= Game Over! =-=-=-=-=-=-=-=-=-=-");
         System.out.println(Players[0].getName() + " Wins With " + humSets + " Sets!\n");
+        System.out.println("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-");
+        System.out.println("");
       }
       else
       {

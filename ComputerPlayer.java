@@ -87,7 +87,13 @@ public class ComputerPlayer extends Player {
 			case 1:
 				while(true){
 					returnValue = randomNumber.nextInt(13);
-					if(this.hand.containsValue(returnValue)){
+					if(this.hand.containsValue(returnValue))
+					{
+						try { Card.writeCardToFile("Asked For: " + returnValue); }
+						catch (IOException e)
+						{
+                e.printStackTrace();
+            }
 						return returnValue;
 					}
 				}
@@ -97,6 +103,11 @@ public class ComputerPlayer extends Player {
 				for(int i : askedCardsMemory){
 					if(this.hand.containsValue(i)){
 						askedCardsMemory.remove(new Integer(i));
+						try { Card.writeCardToFile("Asked For: " + i); }
+						catch (IOException e)
+						{
+                e.printStackTrace();
+            }
 						return i;
 					}
 				}
@@ -104,6 +115,11 @@ public class ComputerPlayer extends Player {
 				while(true){
 					returnValue = randomNumber.nextInt(13);
 					if(this.hand.containsValue(returnValue)){
+						try { Card.writeCardToFile("Asked For: " + returnValue); }
+						catch (IOException e)
+						{
+                e.printStackTrace();
+            }
 						return returnValue;
 					}
 				}
